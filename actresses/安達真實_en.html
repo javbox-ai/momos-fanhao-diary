@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安達真實 - Actress Page | Momo’s Fanhao Diary</title>
+    <meta name="description" content="Explore all works featuring actress 安達真實 on Momo’s Fanhao Diary. Find video codes and titles.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="安達真實 - Actress Page | Momo’s Fanhao Diary">
+    <meta property="og:description" content="Explore works featuring 安達真實 on Momo’s Fanhao Diary.">
+    
+-   <meta property="og:image" content="/static/LOGO.png"> 
+-   <meta property="og:url" content="/actresses/">
++   <meta property="og:image" content="https://momo-fanhao-diary.example.com/static/LOGO.png"> 
++   <meta property="og:url" content="https://momo-fanhao-diary.example.com/actresses/"> 
+    <meta property="og:type" content="profile">
+    
+-   <link rel="canonical" href="/actresses/">
++   <link rel="canonical" href="https://momo-fanhao-diary.example.com/actresses/"> 
+    <link rel="icon" href="../../static/favicon.png"> <!-- Favicon relative path from actresses/ -->
+    <link rel="stylesheet" href="../../static/style.css"> <!-- CSS relative path from actresses/ -->
+    <style>
+        /* Add specific styles for actress page if needed */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+             <!-- Use breadcrumb home link -->
+             <a href="../../index_en.html"> 
+                 <img src="../../static/LOGO.png" alt="Momo’s Fanhao Diary Logo" style="height: 50px;">
+             </a>
+        </div>
+        <nav class="main-nav">
+            <!-- Search Form -->
+            <form id="searchFormHeader">
+                <input type="text" name="q" id="searchInputHeader" placeholder="Enter number or actress name">
+                <button type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            
+            
+            <a href="" class=" lang-zh">中文</a> | <a href="" class="active lang-en">English</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index_en.html">Homepage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">安達真實</li>
+            </ol>
+        </nav>
+
+        <h1>安達真實</h1>
+        <p>List of reviews featuring this actress.</p>
+
+    <main>
+        <section class="video-list">
+            <h2>Reviewed Videos</h2>
+            
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="../../videos/onsd-166_en.html" class="card-link">
+                                ONSD-166 小美少女偶像和Pakopako 4小時 - 小倉ありす (onsd-166)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/oned-756_en.html" class="card-link">
+                                ONED-756 勉強馬賽克無限高潮！激烈的槓桿他媽的 Bakobako 狂歡 Mami Adachi - 安達真實 (oned-756)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/oned-723_en.html" class="card-link">
+                                ONED-723 勉強馬賽克激烈活塞 9 安達麻美 - 安達真實 (oned-723)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/oned-656_en.html" class="card-link">
+                                ONED-656 勉強馬賽克淨厚性愛安達麻美 - 安達真實 (oned-656)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/oned-631_en.html" class="card-link">
+                                ONED-631 幾乎沒有馬賽克麻美 Adachi Pakopako 有 6 套服裝！ - 安達真實 (oned-631)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/oned-618_en.html" class="card-link">
+                                ONED-618 Rookie x Barely Mosaic 新秀 Barely Mosaic Mami Adachi - 安達真實 (oned-618)
+                            </a>
+                        </li>
+                    
+                </ul>
+            
+        </section>
+    </main>
+
+    <section class="disclaimer">
+        <h2>Disclaimer</h2>
+        
+        <p>This website is for sharing AV reviews and providing resource search tools only. All content is for academic exchange and personal reference.</p>
+        <p>We do not store, produce, or distribute any illegal or copyrighted audiovisual materials.</p>
+        <p>Users must comply with local laws and regulations. Any legal responsibility arising from the use of this website shall be borne by the user.</p>
+        <p>If there is any infringement or inappropriate content, please contact us and we will handle it promptly.</p>
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Momo's Reviews. All rights reserved.</p>
+        <p>Advertisement</p>
+    </footer>
+    <script>
+        // AvHub 搜尋功能 (Header)
+        function handleSearchSubmit(event) {
+            event.preventDefault(); // 防止表單提交
+            const query = document.getElementById('searchInputHeader').value.trim();
+            if (query) {
+                const searchUrl = `https://avhub.pages.dev/search/${encodeURIComponent(query)}`;
+                window.open(searchUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化搜尋表單
+            const searchForm = document.querySelector('.main-nav form');
+            if (searchForm) {
+                searchForm.id = 'searchFormHeader'; // Add ID if not present
+                const searchInput = searchForm.querySelector('input[name="q"]');
+                if (searchInput) searchInput.id = 'searchInputHeader'; // Add ID if not present
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+        });
+    </script>
+</body>
+</html>
