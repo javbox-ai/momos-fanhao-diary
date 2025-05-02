@@ -9,29 +9,31 @@
     
     <meta property="og:title" content="Homepage - Momo’s Fanhao Diary">
     <meta property="og:description" content="Explore Momo’s secret diary of JAV reviews, latest updates, favorite actresses, and popular categories.">
-    <meta property="og:image" content="/static/LOGO.png"> 
-    <meta property="og:url" content="/index_en.html">
-    <meta property="og:type" content="website">
-    
-    <link rel="canonical" href="/index_en.html">
-    <link rel="icon" href="static/favicon.png">
-    <link rel="stylesheet" href="static/style.css">
+    -    <meta property="og:image" content="/static/LOGO.png"> 
+    -    <meta property="og:url" content="/index_en.html">
+    +    <meta property="og:image" content="https://momo-fanhao-diary.example.com/static/LOGO.png"> 
+    +    <meta property="og:url" content="https://momo-fanhao-diary.example.com/index_en.html"> 
+     <meta property="og:type" content="website">
+     
+     -    <link rel="canonical" href="/index_en.html">
+     +    <link rel="canonical" href="https://momo-fanhao-diary.example.com/index_en.html"> 
+     <link rel="icon" href="static/favicon.png">
+     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
     <header>
         <div class="logo">
-                <a href="index_en.html">
-                    <img src="static/LOGO.png" alt="Momo’s Fanhao Diary Logo" style="height: 50px;">
+                <a href="index_en.html" style="text-decoration: none; color: inherit; font-size: 1.5em; font-weight: bold;">
+                    Momo’s Fanhao Diary
                 </a>
             </div>
         <nav class="main-nav">
-            <form method="get"> <!-- Removed dynamic action -->
-                <input type="hidden" name="lang" value="en">
--                 <input type="text" name="q" placeholder="Enter number or actress name">
-+                 <input type="text" name="q" id="searchInputHeader" placeholder="Enter number or actress name">
-                  <button type="submit">Search</button>
-              </form>
-          </nav>
+            <!-- Single Search Form -->
+            <form id="searchFormHeader" onsubmit="handleSearchSubmit(event); return false;">
+                 <input type="text" name="q" id="searchInputHeader" placeholder="Enter number or actress name">
+                 <button type="submit">Search</button>
+            </form>
+        </nav>
         <div class="language-switcher">
             <a href="index_zh.html" class="">中文</a> | <a href="index_en.html" class="active">English</a>
         </div>
@@ -40,175 +42,158 @@
     <div class="main-container">
         <main class="content"> <!-- Changed class to main.content -->
             <section class="latest-reviews">
-                <h2>Latest Static Pages</h2>
+                <h2>Latest Reviews</h2>
                 
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/rbd-931_en.html" class="card-link">
+                        <a href="videos/hvg-034_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="RBD-931 新人護士明里紬被醫院裡的頑固老頭病人每天侵犯" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="hvg-034" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>RBD-931 新人護士明里紬被醫院裡的頑固老頭病人每天侵犯</h3>
+                                <h3>hvg-034</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/rbd-933_en.html" class="card-link">
+                        <a href="videos/gvg-491_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="RBD-933 對來面視的女大學生的凌辱調教就算有很愛的男朋友也不得不在肉棒抽出下呻吟 二宮光" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="gvg-491" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>RBD-933 對來面視的女大學生的凌辱調教就算有很愛的男朋友也不得不在肉棒抽出下呻吟 二宮光</h3>
+                                <h3>gvg-491</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/adn-219_en.html" class="card-link">
+                        <a href="videos/gvg-490_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="ADN-219 我的鄰居妻子不道德的下午 Saeko Matsushita - 松下紗榮子" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="gvg-490" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>ADN-219 我的鄰居妻子不道德的下午 Saeko Matsushita - 松下紗榮子</h3>
+                                <h3>gvg-490</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/atid-362_en.html" class="card-link">
+                        <a href="videos/gvg-489_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="ATID-362 辦公室OL女郎織笠留美濕潤的連褲襪 - 織笠流美" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="gvg-489" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>ATID-362 辦公室OL女郎織笠留美濕潤的連褲襪 - 織笠流美</h3>
+                                <h3>gvg-489</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/atid-361_en.html" class="card-link">
+                        <a href="videos/gvg-459_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="ATID-361 我是老師，即使我是罪犯-加瀨菜奈穗 - 加瀨菜菜穗" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="gvg-459" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>ATID-361 我是老師，即使我是罪犯-加瀨菜奈穗 - 加瀨菜菜穗</h3>
+                                <h3>gvg-459</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/atkd-286_en.html" class="card-link">
+                        <a href="videos/gvg-457_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="ATKD-286 射精前強行中出 ● Pu 39 彈幕 4 小時 Vol.2 - 西野翔" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="gvg-457" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>ATKD-286 射精前強行中出 ● Pu 39 彈幕 4 小時 Vol.2 - 西野翔</h3>
+                                <h3>gvg-457</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/rbd-937_en.html" class="card-link">
+                        <a href="videos/gvg-417_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="RBD-937 懦弱管家雄起教訓名媛貴族夫人戲弄虐待調教成肉便器 小早川憐子 - 小早川怜子" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="gvg-417" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>RBD-937 懦弱管家雄起教訓名媛貴族夫人戲弄虐待調教成肉便器 小早川憐子 - 小早川怜子</h3>
+                                <h3>gvg-417</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/jbd-247_en.html" class="card-link">
+                        <a href="videos/gvg-453_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="JBD-247 冷酷監禁調教 神咲詩織" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="gvg-453" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>JBD-247 冷酷監禁調教 神咲詩織</h3>
+                                <h3>gvg-453</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
                     
                     <article class="card"> <!-- Changed class to card -->
                         
-                        <a href="videos/atid-359_en.html" class="card-link">
+                        <a href="videos/gvg-414_en.html" class="card-link">
                             
-                            <img src="static/placeholder.jpg" alt="ATID-359 被公司領導們用開除威脅侵犯內射的實習生美谷朱里" class="card-image" style="filter: blur(5px);">
+                            <img src="static/placeholder.jpg" alt="gvg-414" class="card-image" style="filter: blur(5px);">
                             <div class="card-content">
-                                <h3>ATID-359 被公司領導們用開除威脅侵犯內射的實習生美谷朱里</h3>
+                                <h3>gvg-414</h3>
                                 <div class="card-tags"> <!-- Changed class to card-tags -->
                                     <span class="tag">en</span>
                                     
                                 </div>
                                 
-                                <p>Generated on: 2025-04-29 22:21</p>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="card"> <!-- Changed class to card -->
-                        
-                        <a href="videos/atid-358_en.html" class="card-link">
-                            
-                            <img src="static/placeholder.jpg" alt="ATID-358 肛門門 Ren Hinami - 赤渕蓮" class="card-image" style="filter: blur(5px);">
-                            <div class="card-content">
-                                <h3>ATID-358 肛門門 Ren Hinami - 赤渕蓮</h3>
-                                <div class="card-tags"> <!-- Changed class to card-tags -->
-                                    <span class="tag">en</span>
-                                    
-                                </div>
-                                
-                                <p>Generated on: 2025-04-29 22:21</p>
+                                <p>Generated on: 2025-05-02 22:27</p>
                             </div>
                         </a>
                     </article>
@@ -329,19 +314,19 @@
                       
                         
                             
-                            <li><a href="videos/abf-211_en.html">ABF-211 可以和河合明日奈共度一夜的超高級約會俱樂部【附35分鐘獨家特典片段】 - 河合明日菜</a></li>
-                        
-                            
                             <li><a href="videos/kit-004_en.html">KIT-004 我被文藝女青年調戲的日子。 生野町 - 幾野まち</a></li>
                         
                             
-                            <li><a href="videos/ppx-027_en.html">PPX-027 Nonoura Non 8 小時 BEST PRESTIGE PREMIUM EXCLUSIVE 第 10 卷 - 野野浦暖</a></li>
+                            <li><a href="videos/abf-213_en.html">ABF-213 極限突破SEX：打破絕美少女外殼的虐戀覺醒性愛 VOL.11 矢掛海 - 八挂うみ</a></li>
                         
                             
-                            <li><a href="videos/abf-208_en.html">ABF-208 FETISH TOKYO 鈴森玲夢 [內含 40 分鐘獨家特典片段] - 涼森玲夢</a></li>
+                            <li><a href="videos/abf-214_en.html">ABF-214 枕頭女人「嗯…我想做愛，所以你願意加入嗎…？」七島麻衣 - 七嶋舞</a></li>
                         
                             
-                            <li><a href="videos/abf-219_en.html">ABF-219 滝本雫羽逆搭訕素人男！ [內含 35 分鐘獨家花絮] - 瀧本雫葉</a></li>
+                            <li><a href="videos/abf-211_en.html">ABF-211 可以和河合明日奈共度一夜的超高級約會俱樂部【附35分鐘獨家特典片段】 - 河合明日菜</a></li>
+                        
+                            
+                            <li><a href="videos/abf-210_en.html">ABF-210 身為 NEET 公主，你的能力也是有極限的！ 一位失業、書呆子、性生活受挫的乾魚美女突然想起了雞巴的快感！ 徐琳 [內含 45 分鐘獨家特典片段] - 瀬緒凛</a></li>
                         
                     
                 </ol>
