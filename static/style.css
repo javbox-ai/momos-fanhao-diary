@@ -1,0 +1,525 @@
+/* 基本樣式 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Kalam:wght@400;700&family=Poppins:wght@600&family=Comic+Neue:wght@700&family=Segoe+UI&display=swap'); /* 引入字體, 加入 Kalam 400 */
+
+body {
+    font-family: "Segoe UI", sans-serif; /* 改用 Segoe UI */
+    margin: 0;
+    padding: 0;
+    background-color: #FFF8F0; /* 淺奶油底 */
+    color: #333; /* 改為深灰色 */
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* 繼承顏色 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333; /* 標題顏色統一 */
+    font-family: "Segoe UI", sans-serif; /* 確保標題也使用 Segoe UI */
+}
+
+/* 頁首 */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem; /* 調整 padding */
+    background-color: #ffffff; /* 白色背景 */
+    border-bottom: 1px solid #eee; /* 底線分隔 */
+}
+
+.logo a {
+    font-size: 1.4rem; /* 調整 Logo 大小 */
+    font-weight: bold; /* 加粗 */
+    font-family: 'Poppins', sans-serif; /* 使用 Poppins - 根據參考 CSS */
+    color: #FF69B4; /* 粉色 */
+    text-decoration: none;
+    line-height: 1;
+}
+
+.logo a span.subtitle {
+    display: none; /* 隱藏副標題 */
+}
+
+nav.main-nav {
+    flex-grow: 0; /* 不佔據多餘空間 */
+    text-align: left; /* 靠左 */
+}
+
+nav.main-nav form {
+    display: flex; /* 使用 flex 佈局 */
+    align-items: center; /* 垂直居中 */
+}
+
+nav.main-nav input[type="text"] {
+    padding: 0.6rem; /* 調整 padding */
+    border: 1px solid #ccc; /* 調整邊框 */
+    border-radius: 5px; /* 圓角 */
+    margin-right: 0; /* 移除右邊距 */
+    width: 300px; /* 適當寬度 */
+    border-top-right-radius: 0; /* 右上角直角 */
+    border-bottom-right-radius: 0; /* 右下角直角 */
+}
+
+nav.main-nav button {
+    padding: 0.6rem 1rem; /* 調整 padding */
+    background-color: #FF69B4; /* 粉色按鈕 */
+    color: white;
+    border: 1px solid #FF69B4; /* 邊框與背景同色 */
+    border-left: none; /* 移除左邊框 */
+    border-radius: 5px; /* 圓角 */
+    border-top-left-radius: 0; /* 左上角直角 */
+    border-bottom-left-radius: 0; /* 左下角直角 */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    height: calc(0.6rem * 2 + 1em + 2px); /* 與 input 高度一致 (padding*2 + line-height + border*2) */
+    line-height: 1em; /* 確保文字垂直居中 */
+}
+
+nav.main-nav button:hover {
+    background-color: #db4b9a; /* 深一點的粉色 */
+    border-color: #db4b9a;
+}
+
+.language-switcher {
+    margin-left: 1rem; /* 與搜尋按鈕間距 */
+}
+
+.language-switcher a {
+    margin: 0 5px;
+    color: #888;
+    text-decoration: none;
+}
+
+.language-switcher a.active {
+    font-weight: bold;
+    color: #FF69B4; /* 粉色 */
+}
+
+/* 主內容區容器 */
+.main-container {
+    display: flex;
+    gap: 2rem; /* 調整間距 */
+    padding: 2rem; /* 調整 padding */
+    max-width: 1200px;
+    margin: 0 auto; /* 頁面居中 */
+}
+
+main.content { /* 主內容區 */
+    flex: 3; /* 佔 3 份 */
+}
+
+.latest-reviews h2, .category-articles h2 {
+    /* border-bottom: 1px solid #eee; */ /* 移除底線 */
+    /* padding-bottom: 0.4rem; */
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* 側邊欄 */
+.sidebar {
+    flex: 1; /* 佔 1 份 */
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 1rem;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    height: fit-content; /* 高度自適應內容 */
+}
+
+.sidebar-card {
+    background-color: transparent; /* 移除卡片背景 */
+    padding: 0; /* 移除卡片 padding */
+    border-radius: 0; /* 移除卡片圓角 */
+    box-shadow: none; /* 移除卡片陰影 */
+}
+
+.sidebar-card h2 /* 側邊欄標題樣式 */ {
+    margin-top: 0;
+    margin-bottom: 0.8em;
+    font-size: 1.1rem; /* 調整字體大小 */
+    color: #7A4988; /* 紫色 */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+.sidebar ul, .sidebar ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li, .sidebar p /* 統一側邊欄項目樣式 */ {
+    margin-bottom: 0.6em;
+    font-size: 0.95rem;
+}
+
+.sidebar li a, .sidebar p a {
+    color: #555;
+}
+
+.sidebar li a:hover, .sidebar p a:hover {
+    color: #FF69B4; /* 粉系 accent */
+}
+
+/* 廣告區塊 */
+.ads-sidebar, .ads-footer, .ads-main-bottom, .ads-content-top, .ads-content-middle, .ads-content-bottom, .ads-category-middle, .ads-category-bottom {
+    background-color: #f0f0f0; /* 灰色背景 */
+    padding: 1.5em 1em;
+    margin: 1.5em 0;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.ads-sidebar h3, .ads-footer h3, .ads-main-bottom h3, .ads-content-top h3, .ads-content-middle h3, .ads-content-bottom h3, .ads-category-middle h3, .ads-category-bottom h3 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+    color: #999; /* 淺灰色字體 */
+    font-weight: normal;
+    font-family: "Segoe UI", sans-serif; /* 使用新字體 */
+}
+
+.ads-sidebar p, .ads-footer p, .ads-main-bottom p, .ads-content-top p, .ads-content-middle p, .ads-content-bottom p, .ads-category-middle p, .ads-category-bottom p {
+    color: #aaa;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* 心得列表卡片 (改為 .card) */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 淺陰影 */
+    overflow: hidden; /* 確保圓角生效 */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.card a.card-link {
+    display: flex; /* 讓連結內容也用 flex */
+    gap: 1rem;
+    color: inherit; /* 繼承文字顏色 */
+    text-decoration: none;
+    width: 100%; /* 連結佔滿卡片 */
+}
+
+.card img.card-image {
+    max-width: 150px; /* 限制圖片寬度 */
+    height: auto;
+    object-fit: cover; /* 保持圖片比例 */
+    border-radius: 5px; /* 圖片圓角 */
+    flex-shrink: 0; /* 防止圖片被壓縮 */
+    align-self: flex-start; /* 圖片頂部對齊 */
+}
+
+.card .card-content {
+    flex-grow: 1; /* 內容佔據剩餘空間 */
+}
+
+.card .card-content h3 {
+    margin-top: 0; /* 移除頂部間距 */
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.card .card-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0.5em;
+}
+
+.card .card-tags {
+    margin-bottom: 0.6em;
+}
+
+.tag {
+    color: #888; /* 調整顏色 */
+    font-size: 0.85rem; /* 調整大小 */
+    margin-right: 0.6em; /* 調整間距 */
+    margin-bottom: 0.3em;
+    display: inline; /* 改回 inline */
+}
+
+/* 移除特定 tag 樣式，讓所有 tag 統一 */
+/* .tag-id { ... } */
+/* .tag-actress { ... } */
+/* .tag-theme { ... } */
+
+/* 詳情頁 */
+
+/* AI 生成內容的字體 */
+.ai-content {
+    font-family: 'Kalam', cursive; /* 套用手寫風格字體 */
+    font-size: 1.1rem; /* 稍微調整字體大小 */
+    line-height: 1.7; /* 調整行高以提高可讀性 */
+    white-space: pre-wrap; /* 保留換行和空格 */
+}
+.video-detail {
+    background-color: #fff;
+    padding: 1.5em 2em;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.video-detail h1 {
+    margin-top: 0;
+    margin-bottom: 0.8em;
+    font-size: 1.8em;
+    color: #6A1B9A; /* 深紫 */
+}
+
+.cover-image {
+    display: block;
+    max-width: 400px; /* 限制封面最大寬度 */
+    height: auto;
+    margin: 0 auto 1.5em auto; /* 居中 */
+    border-radius: 8px;
+}
+
+.ai-intro, .ai-review, .video-meta, .tags, .momo-whisper, .recommendations, .download-section {
+    margin-bottom: 1.8em;
+}
+
+.ai-intro h2, .ai-review h2, .video-meta span, .tags h3, .momo-whisper h2, .recommendations h2, .download-section h3 {
+    color: #4A4A4A;
+}
+
+.ai-intro p, .ai-review p {
+    line-height: 1.7;
+    color: #555;
+}
+
+.video-meta span {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+    font-size: 0.95em;
+}
+
+.tags span {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #666;
+    padding: 0.3em 0.8em;
+    border-radius: 12px;
+    font-size: 0.9em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* 收藏按鈕 */
+.favorite-button {
+    padding: 10px 20px;
+    background-color: #FFC0CB; /* 粉色背景 */
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin: 1em 0;
+    display: inline-block;
+}
+
+.favorite-button:hover {
+    background-color: #FFB6C1; /* 稍深粉色 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.favorite-button.favorited {
+    background-color: #FF69B4; /* 深粉色 */
+    color: #fff;
+}
+
+/* Momo 的悄悄話 */
+.momo-whisper {
+    background-color: #FFF8F0; /* 奶油底 */
+    border-left: 4px solid #FFC0CB; /* 粉色左邊框 */
+    padding: 1em 1.5em;
+    border-radius: 0 8px 8px 0;
+}
+
+.momo-whisper h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+    color: #FF69B4; /* 粉色標題 */
+}
+
+.momo-whisper p {
+    margin: 0;
+    font-style: italic;
+    color: #777;
+}
+
+/* 下載區塊 */
+.download-section {
+    margin-top: 2em;
+    padding: 1.5em;
+    background-color: #f8f8f8; /* 淺灰 */
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.download-section h3 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: #666;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1.1em;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #8A2BE2; /* 紫色 */
+    border: none;
+    border-radius: 20px; /* 更圓的角 */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    background-color: #6A1B9A; /* 深紫色 */
+}
+
+/* Disclaimer Area (Added based on image) */
+.disclaimer {
+    background-color: #f0f0f0; /* Light grey background */
+    padding: 1rem 2rem;
+    margin: 2rem auto 0; /* Centered with margin, place before footer */
+    max-width: 1200px; /* Match main container width */
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    border-radius: 8px;
+}
+
+/* 頁尾 */
+footer {
+    background-color: #f8f8f8; /* 淺灰 */
+    padding: 1em 0 0.5em 0;
+    margin-top: 0; /* Remove top margin as disclaimer is above */
+    text-align: center;
+    border-top: 1px solid #eee;
+    color: #999; /* 小灰提示 */
+    font-size: 0.9em;
+}
+
+footer .ads-footer {
+    margin-bottom: 1em;
+    background-color: #e9e9e9; /* 頁尾廣告稍深灰 */
+}
+
+footer p {
+    margin: 0.5em 0;
+}
+
+/* 移除舊的語言切換樣式，已在 header 中處理 */
+
+/* 響應式設計 */
+@media (max-width: 992px) {
+    .main-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    nav.main-nav input[type="text"] {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: stretch; /* Stretch items like search bar */
+        height: auto;
+        padding: 1em;
+    }
+    nav.main-nav {
+        margin-top: 1rem; /* Add space below logo */
+        margin-bottom: 0.5em;
+        width: 100%; /* Full width */
+    }
+    nav.main-nav form {
+        width: 100%;
+    }
+    nav.main-nav input[type="text"] {
+        flex-grow: 1; /* Input takes available space */
+        width: auto; /* Override fixed width */
+    }
+    .language-switcher {
+        margin-top: 0.5em;
+        align-self: flex-end; /* Align to the right */
+    }
+    .main-container {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    /* .review-card { ... } */ /* This class seems unused */
+    .card a.card-link {
+        flex-direction: column; /* 手機上圖片在上 */
+    }
+    .card img.card-image {
+        width: 100%;
+        max-width: 100%; /* 確保圖片不超出卡片 */
+        height: 180px; /* 調整手機版圖片高度 */
+        margin-bottom: 0.8em;
+        align-self: center; /* 圖片居中 */
+    }
+    .cover-image {
+        max-width: 90%;
+    }
+    .video-detail {
+        padding: 1em;
+    }
+    .disclaimer {
+        padding: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        max-width: none; /* Allow full width within padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo a {
+        font-size: 1.2rem;
+    }
+    nav.main-nav input[type="text"] {
+        padding: 0.5rem;
+    }
+    nav.main-nav button {
+        padding: 0.5rem 0.8rem;
+        height: calc(0.5rem * 2 + 1em + 2px); /* Adjust height for smaller padding */
+    }
+    .card .card-content h3 {
+        font-size: 1.1rem;
+    }
+    .card .card-content p, .tag {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>石倉えいみ - Actress Page | Momo’s Fanhao Diary</title>
+    <meta name="description" content="Explore all works featuring actress 石倉えいみ on Momo’s Fanhao Diary. Find video codes and titles.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="石倉えいみ - Actress Page | Momo’s Fanhao Diary">
+    <meta property="og:description" content="Explore works featuring 石倉えいみ on Momo’s Fanhao Diary.">
+    
+-   <meta property="og:image" content="/static/LOGO.png"> 
+-   <meta property="og:url" content="/actresses/">
++   <meta property="og:image" content="https://momo-fanhao-diary.example.com/static/LOGO.png"> 
++   <meta property="og:url" content="https://momo-fanhao-diary.example.com/actresses/"> 
+    <meta property="og:type" content="profile">
+    
+-   <link rel="canonical" href="/actresses/">
++   <link rel="canonical" href="https://momo-fanhao-diary.example.com/actresses/"> 
+    <link rel="icon" href="../../static/favicon.png"> <!-- Favicon relative path from actresses/ -->
+    <link rel="stylesheet" href="../../static/style.css"> <!-- CSS relative path from actresses/ -->
+    <style>
+        /* Add specific styles for actress page if needed */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+             <!-- Use breadcrumb home link -->
+             <a href="../../index_en.html"> 
+                 <img src="../../static/LOGO.png" alt="Momo’s Fanhao Diary Logo" style="height: 50px;">
+             </a>
+        </div>
+        <nav class="main-nav">
+            <!-- Search Form -->
+            <form id="searchFormHeader">
+                <input type="text" name="q" id="searchInputHeader" placeholder="Enter number or actress name">
+                <button type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            
+            
+            <a href="" class=" lang-zh">中文</a> | <a href="" class="active lang-en">English</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index_en.html">Homepage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">石倉えいみ</li>
+            </ol>
+        </nav>
+
+        <h1>石倉えいみ</h1>
+        <p>List of reviews featuring this actress.</p>
+
+    <main>
+        <section class="video-list">
+            <h2>Reviewed Videos</h2>
+            
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="../../videos/juc-816_en.html" class="card-link">
+                                JUC-816 折磨妻子～岳父猥褻的不孕症治療損害了妻子～石倉英美 - 石倉えいみ (juc-816)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/jusd-378_en.html" class="card-link">
+                                JUSD-378 與丈夫以外的男人發生性關係的 8 小時不忠的年輕妻子 - 青木鈴 (jusd-378)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/juc-564_en.html" class="card-link">
+                                JUC-564 我姐夫強暴了我…石倉英美 - 香山蘭 (juc-564)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdmt-496_en.html" class="card-link">
+                                SDMT-496 青少年兒子和媽媽接觸洗澡 - かなと沙奈 (sdmt-496)
+                            </a>
+                        </li>
+                    
+                </ul>
+            
+        </section>
+    </main>
+
+    <section class="disclaimer">
+        <h2>Disclaimer</h2>
+        
+        <p>This website is for sharing AV reviews and providing resource search tools only. All content is for academic exchange and personal reference.</p>
+        <p>We do not store, produce, or distribute any illegal or copyrighted audiovisual materials.</p>
+        <p>Users must comply with local laws and regulations. Any legal responsibility arising from the use of this website shall be borne by the user.</p>
+        <p>If there is any infringement or inappropriate content, please contact us and we will handle it promptly.</p>
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Momo's Reviews. All rights reserved.</p>
+        <p>Advertisement</p>
+    </footer>
+    <script>
+        // AvHub 搜尋功能 (Header)
+        function handleSearchSubmit(event) {
+            event.preventDefault(); // 防止表單提交
+            const query = document.getElementById('searchInputHeader').value.trim();
+            if (query) {
+                const searchUrl = `https://avhub.pages.dev/search/${encodeURIComponent(query)}`;
+                window.open(searchUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化搜尋表單
+            const searchForm = document.querySelector('.main-nav form');
+            if (searchForm) {
+                searchForm.id = 'searchFormHeader'; // Add ID if not present
+                const searchInput = searchForm.querySelector('input[name="q"]');
+                if (searchInput) searchInput.id = 'searchInputHeader'; // Add ID if not present
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+        });
+    </script>
+</body>
+</html>

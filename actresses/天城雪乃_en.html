@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天城雪乃 - Actress Page | Momo’s Fanhao Diary</title>
+    <meta name="description" content="Explore all works featuring actress 天城雪乃 on Momo’s Fanhao Diary. Find video codes and titles.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="天城雪乃 - Actress Page | Momo’s Fanhao Diary">
+    <meta property="og:description" content="Explore works featuring 天城雪乃 on Momo’s Fanhao Diary.">
+    
+-   <meta property="og:image" content="/static/LOGO.png"> 
+-   <meta property="og:url" content="/actresses/">
++   <meta property="og:image" content="https://momo-fanhao-diary.example.com/static/LOGO.png"> 
++   <meta property="og:url" content="https://momo-fanhao-diary.example.com/actresses/"> 
+    <meta property="og:type" content="profile">
+    
+-   <link rel="canonical" href="/actresses/">
++   <link rel="canonical" href="https://momo-fanhao-diary.example.com/actresses/"> 
+    <link rel="icon" href="../../static/favicon.png"> <!-- Favicon relative path from actresses/ -->
+    <link rel="stylesheet" href="../../static/style.css"> <!-- CSS relative path from actresses/ -->
+    <style>
+        /* Add specific styles for actress page if needed */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+             <!-- Use breadcrumb home link -->
+             <a href="../../index_en.html"> 
+                 <img src="../../static/LOGO.png" alt="Momo’s Fanhao Diary Logo" style="height: 50px;">
+             </a>
+        </div>
+        <nav class="main-nav">
+            <!-- Search Form -->
+            <form id="searchFormHeader">
+                <input type="text" name="q" id="searchInputHeader" placeholder="Enter number or actress name">
+                <button type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            
+            
+            <a href="" class=" lang-zh">中文</a> | <a href="" class="active lang-en">English</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index_en.html">Homepage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">天城雪乃</li>
+            </ol>
+        </nav>
+
+        <h1>天城雪乃</h1>
+        <p>List of reviews featuring this actress.</p>
+
+    <main>
+        <section class="video-list">
+            <h2>Reviewed Videos</h2>
+            
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdnm-429_en.html" class="card-link">
+                                SDNM-429 天城雪乃，33歲，農婦，立志成為演歌歌手，無法停止對舞台中央的嚮往。最終章：和丈夫去泡溫泉的時候，我只是睡著了。下次，我想要留下美好的回憶. ..一個充滿自由和快樂的夜晚。兩天的射液溫泉之旅 (sdnm-429)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdnm-419_en.html" class="card-link">
+                                SDNM-419 天城雪乃，33歲，一位立志成為演歌歌手的農婦，卻無法擺脫對舞台的渴望。第2章：我無法忘記最後一次拍攝的照片，我陷入了困境痛苦，我想發洩我所有的挫敗感...Geki Piss Toys・我整天在3P中射精！ (sdnm-419)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdnm-411_en.html" class="card-link">
+                                SDNM-411 天城雪乃，33歲，立志成為演歌歌手的農婦，無法停止對登上舞台中央的渴望 AV出道1,865 9 (sdnm-411)
+                            </a>
+                        </li>
+                    
+                </ul>
+            
+        </section>
+    </main>
+
+    <section class="disclaimer">
+        <h2>Disclaimer</h2>
+        
+        <p>This website is for sharing AV reviews and providing resource search tools only. All content is for academic exchange and personal reference.</p>
+        <p>We do not store, produce, or distribute any illegal or copyrighted audiovisual materials.</p>
+        <p>Users must comply with local laws and regulations. Any legal responsibility arising from the use of this website shall be borne by the user.</p>
+        <p>If there is any infringement or inappropriate content, please contact us and we will handle it promptly.</p>
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Momo's Reviews. All rights reserved.</p>
+        <p>Advertisement</p>
+    </footer>
+    <script>
+        // AvHub 搜尋功能 (Header)
+        function handleSearchSubmit(event) {
+            event.preventDefault(); // 防止表單提交
+            const query = document.getElementById('searchInputHeader').value.trim();
+            if (query) {
+                const searchUrl = `https://avhub.pages.dev/search/${encodeURIComponent(query)}`;
+                window.open(searchUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化搜尋表單
+            const searchForm = document.querySelector('.main-nav form');
+            if (searchForm) {
+                searchForm.id = 'searchFormHeader'; // Add ID if not present
+                const searchInput = searchForm.querySelector('input[name="q"]');
+                if (searchInput) searchInput.id = 'searchInputHeader'; // Add ID if not present
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+        });
+    </script>
+</body>
+</html>
