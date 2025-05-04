@@ -1,0 +1,6 @@
+Flask
+requests
+# Add your specific SQL database connector here, e.g.:
+# psycopg2-binary  # For PostgreSQL
+mysql-connector-python # For MySQL
+# pyodbc # For SQL Server/ODBC

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="{{ lang if lang else 'zh' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ '404 Not Found - Oops!' if lang == 'en' else '404 找不到頁面 - 糟糕！' }}</title>
+    <meta name="robots" content="noindex"> <!-- Prevent search engines from indexing 404 page -->
+    <link rel="icon" href="../static/favicon.png"> <!-- Relative path from root 404.html -->
+    <link rel="stylesheet" href="../static/style.css"> <!-- Relative path from root 404.html -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            background-color: #f8f9fa;
+            font-family: sans-serif;
+        }
+        .error-container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 3em;
+            color: #dc3545;
+            margin-bottom: 0.5em;
+        }
+        p {
+            font-size: 1.2em;
+            color: #6c757d;
+            margin-bottom: 1.5em;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        .lost-image {
+            max-width: 200px;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <!-- You can add a funny image here -->
+        <!-- <img src="../static/images/lost.svg" alt="Lost?" class="lost-image"> --> <!-- Example relative path if image is used -->
+        <h1>{{ '404 - Page Not Found' if lang == 'en' else '404 - 頁面迷路了' }}</h1>
+        {% if lang == 'zh' %}
+        <p>哎呀！您要找的頁面好像偷偷溜走了，或是被外星人綁架了？</p>
+        <p>別擔心，您可以：</p>
+        <ul>
+            <li>檢查一下網址是不是打錯了？</li>
+            <li>回到我們的 <a href="../index_zh.html">首頁</a> 重新出發。</li> <!-- Relative path to static index -->
+            <li>喝杯咖啡，想想人生... 或許頁面就自己回來了？</li>
+        </ul>
+        {% else %}
+        <p>Oops! The page you're looking for seems to have wandered off or maybe abducted by aliens?</p>
+        <p>Don't worry, you can:</p>
+        <ul>
+            <li>Double-check the URL for typos.</li>
+            <li>Go back to our <a href="../index_en.html">Homepage</a> and start fresh.</li> <!-- Relative path to static index -->
+            <li>Grab a coffee, contemplate existence... maybe the page will reappear?</li>
+        </ul>
+        {% endif %}
+        <a href="../index_{{ lang if lang else 'zh' }}.html">{{ 'Go Home' if lang == 'en' else '回首頁' }}</a> <!-- Relative path to static index -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正在前往...</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .ad-placeholder {
+            border: 1px dashed #ccc;
+            padding: 40px;
+            margin-bottom: 20px;
+            background-color: #eee;
+            color: #999;
+        }
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>請稍候...</h1>
+        <p>正在為您準備前往目標頁面。</p>
+        <div class="ad-placeholder">
+            這裡是廣告位 (模擬)
+        </div>
+        <p style="color: #555; margin-top: 15px;">請自行輸入番號</p> {# Added instruction #}
+        <div class="loader"></div>
+        <p id="redirect-message" style="font-size: 0.9em; color: #888;">將在 <span id="countdown">10</span> 秒後自動跳轉...</p> {# Changed countdown display #}
+    </div>
+
+    <script>
+        // Removed getQueryParam function
+
+        const targetUrl = 'https://avhub.pages.dev/'; // Hardcoded target URL
+        const countdownElement = document.getElementById('countdown');
+        let seconds = 10; // Changed countdown seconds
+
+        // Check if targetUrl is set (it's hardcoded now, so it will be)
+        if (targetUrl) {
+            const interval = setInterval(() => {
+                seconds--;
+                countdownElement.textContent = seconds;
+                if (seconds <= 0) {
+                    clearInterval(interval);
+                    // 嘗試跳轉
+                    try {
+                        window.location.href = targetUrl;
+                    } catch (e) {
+                        console.error('Redirect failed:', e);
+                        document.getElementById('redirect-message').textContent = '錯誤：無法跳轉到目標頁面。';
+                        document.querySelector('.loader').style.display = 'none'; // 隱藏加載動畫
+                    }
+                }
+            }, 1000);
+        } else {
+            // This part should theoretically not be reached now with a hardcoded URL
+            document.getElementById('redirect-message').textContent = '錯誤：目標連結配置錯誤。';
+            document.querySelector('.loader').style.display = 'none'; // 隱藏加載動畫
+            console.error('Target URL is missing or invalid');
+        }
+    </script>
+</body>
+</html>

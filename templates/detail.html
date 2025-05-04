@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 使用 AI 生成的 SEO 摘要作為 description -->
+    <meta name="description" content="{{ seo_summary if seo_summary else (video.title if video else '') }}">
+    <title>{{ video.title if video else ('Video Detail' if lang == 'en' else '影片詳情') }} - {{ 'AV Review Sharing' if lang == 'en' else 'AV心得分享' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+                <a href="{{ url_for('index', lang=lang) }}">
+                    <img src="{{ url_for('static', filename='LOGO.png') }}" alt="Momo’s Fanhao Diary Logo" style="height: 50px;"> <!-- Adjust height as needed -->
+                </a>
+            </div>
+        <nav class="main-nav">
+            <form action="{{ url_for('search_redirect') }}" method="get">
+                <input type="hidden" name="lang" value="{{ lang }}">
+                <input type="text" name="q" placeholder="{{ 'Enter number or actress name' if lang == 'en' else '輸入番號或女優名' }}">
+                <button type="submit">{{ 'Search' if lang == 'en' else '搜尋' }}</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            {% set current_video_id = video.id if video else None %}
+            <a href="{{ url_for(request.endpoint, video_id=current_video_id, lang='zh', **request.view_args) if current_video_id else url_for('index', lang='zh') }}" class="{% if lang == 'zh' %}active{% endif %}">中文</a> | 
+            <a href="{{ url_for(request.endpoint, video_id=current_video_id, lang='en', **request.view_args) if current_video_id else url_for('index', lang='en') }}" class="{% if lang == 'en' %}active{% endif %}">English</a>
+        </div>
+    </header>
+
+    <main>
+        {% if video %}
+        <article class="video-detail">
+            <h1>{{ video.title }} {% if seo_summary %}<span class="seo-summary">{{ seo_summary }}</span>{% endif %}</h1>
+            <img src="{{ video.cover_image if video.cover_image else url_for('static', filename='placeholder.jpg') }}" alt="{{ video.title }}" class="cover-image" style="max-width: 100%; height: auto;">
+
+            <section class="ai-intro">
+                <h2>{{ 'AI Introduction' if lang == 'en' else 'AI介紹文段落' }}</h2>
+                <p>{{ ai_intro | safe }}</p>
+            </section>
+
+            <section class="ai-review">
+                <h2>{{ 'AI Review' if lang == 'en' else 'AI心得段落' }}</h2>
+                <p>{{ ai_review | safe }}</p>
+            </section>
+
+            <section class="ads-content-top">
+                <h3>{{ 'Ad Space (Top)' if lang == 'en' else '廣告位 (頁首/內容前)' }}</h3>
+                <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+            </section>
+
+            <!-- 可在此處加入從 video 物件讀取的其他詳細資訊 -->
+            <div class="video-meta">
+                {% if video.actress %}
+                <span>{{ 'Actress' if lang == 'en' else '女優' }}: {{ video.actress }}</span><br>
+                {% endif %}
+                {% if video.release_date %}
+                <span>{{ 'Release Date' if lang == 'en' else '發行日期' }}: {{ video.release_date.strftime('%Y-%m-%d') if video.release_date else 'N/A' }}</span><br>
+                {% endif %}
+                {% if video.category %}
+                <span>{{ 'Category' if lang == 'en' else '類別' }}: <a href="{{ url_for('category', category_name=video.category, lang=lang) }}">{{ video.category }}</a></span><br>
+                {% endif %}
+                {% if video.duration %}
+                <span>{{ 'Duration' if lang == 'en' else '片長' }}: {{ video.duration }} {{ 'min' if lang == 'en' else '分鐘' }}</span><br>
+                {% endif %}
+                {% if video.tags %} 
+                <section class="tags">
+                    <h3>{{ 'Tags' if lang == 'en' else '標籤' }}</h3>
+                    {% for tag in video.tags.split(',') %}
+                    <span>{{ tag.strip() }}</span>
+                    {% endfor %}
+                </section>
+                {% endif %}
+            </div>
+
+            <section class="ads-content-middle">
+                <h3>{{ 'Ad Space (Middle)' if lang == 'en' else '廣告位 (內容中)' }}</h3>
+                <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+            </section>
+
+            <aside class="floating-nav">
+                <h3>{{ 'Extended Search' if lang == 'en' else '延伸搜尋欄' }}</h3>
+                <p>{{ '(Consider placing on the right or floating bar)' if lang == 'en' else '(可考慮放置在右邊或浮動條上)' }}</p>
+                <!-- 搜尋欄位 -->
+            </aside>
+
+            <button class="favorite-button" onclick="toggleFavorite('{{ video.id }}')">♥ {{ 'Favorite this post' if lang == 'en' else '收藏這一篇' }}</button>
+
+            <section class="ads-content-bottom">
+                <h3>{{ 'Ad Space (Bottom)' if lang == 'en' else '廣告位 (頁尾/內容後)' }}</h3>
+                <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+            </section>
+
+            <section class="momo-whisper">
+                <h2>{{ "Momo's Whispers" if lang == 'en' else "Momo 的悄悄話" }}</h2>
+                <p>{{ "This scene is really something! Makes you think... 😉" if lang == 'en' else "這個畫面真的有點東西！讓人看了都... 😉" }}</p>
+                {# TODO: Add more dynamic whispers later #}
+            </section>
+
+            <section class="recommendations">
+                <h2>{{ 'Recommendations (Optional)' if lang == 'en' else '延伸推薦 (optional)' }}</h2>
+                <p>{{ 'Based on category tags or actress.' if lang == 'en' else '以分類標籤或女優為主，像 Netflix 一樣拉滑條推薦類似作品' }}</p>
+                <!-- 推薦卡片 -->
+            </section>
+        </article>
+        {% else %}
+        <div class="error-message">
+            <h1>{{ 'Error' if lang == 'en' else '錯誤' }}</h1>
+            <p>{{ 'Video not found.' if lang == 'en' else '找不到指定的影片。' }}</p>
+            <a href="{{ url_for('index', lang=lang) }}">{{ 'Back to Home' if lang == 'en' else '返回首頁' }}</a>
+        </div>
+        {% endif %}
+        <section class="download-section">
+            <h3>{{ 'Download / Search' if lang == 'en' else '下載 / 搜尋資源' }}</h3>
+            <!-- Construct the URL for the go page, passing the video ID (assuming video.id is the number) -->
+            <a href="{{ url_for('go_redirect', query=video.id, lang=lang) }}" class="download-button" target="_blank">
+                {{ 'Find Resources on AVHub' if lang == 'en' else '前往 AVHub 搜尋資源' }}
+            </a>
+            <p class="disclaimer">{{ '(Opens ad page first)' if lang == 'en' else '(將先開啟廣告頁面)' }}</p>
+        </section>
+    </main>
+
+    <footer>
+        <section class="ads-footer">
+            <h3>{{ 'Ad Space (Footer)' if lang == 'en' else '廣告位 (頁尾)' }}</h3>
+            <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+        </section>
+        <p>&copy; 2024 {{ 'AV Review Sharing' if lang == 'en' else 'AV心得分享' }}</p>
+    </footer>
+
+    <script>
+        function toggleFavorite(videoId) {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+            const button = document.querySelector('.favorite-button');
+            if (favorites[videoId]) {
+                delete favorites[videoId];
+                button.classList.remove('favorited');
+                button.innerHTML = `♥ {{ 'Favorite this post' if lang == 'en' else '收藏這一篇' }}`;
+                console.log(`Removed ${videoId} from favorites`);
+            } else {
+                favorites[videoId] = true;
+                button.classList.add('favorited');
+                button.innerHTML = `★ {{ 'Favorited' if lang == 'en' else '已收藏' }}`;
+                console.log(`Added ${videoId} to favorites`);
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Set initial button state on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoId = '{{ video.id if video else None }}';
+            if (videoId) {
+                const favorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+                const button = document.querySelector('.favorite-button');
+                if (favorites[videoId]) {
+                    button.classList.add('favorited');
+                    button.innerHTML = `★ {{ 'Favorited' if lang == 'en' else '已收藏' }}`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'Homepage - Momo’s Fanhao Diary | Secret AV Reviews' if lang == 'en' else '首頁 - Momo 秘密番號小本本 | AV 心得分享' }}</title>
+    <meta name="description" content="{{ 'Explore Momo’s secret diary of JAV reviews, latest updates, favorite actresses, and popular categories. Your go-to place for honest and fun AV insights.' if lang == 'en' else '探索 Momo 的秘密番號小本本，這裡有最新的 JAV 心得、最愛女優、熱門分類。您尋找真實有趣的 AV 見解的最佳去處。' }}">
+    <meta name="robots" content="index, follow">
+    {# Open Graph Meta Tags #}
+    <meta property="og:title" content="{{ 'Homepage - Momo’s Fanhao Diary' if lang == 'en' else '首頁 - Momo 秘密番號小本本' }}">
+    <meta property="og:description" content="{{ 'Explore Momo’s secret diary of JAV reviews, latest updates, favorite actresses, and popular categories.' if lang == 'en' else '探索 Momo 的秘密番號小本本，這裡有最新的 JAV 心得、最愛女優、熱門分類。' }}">
+    {# !! 請確認您的 base_url 或替換為絕對 URL !! #}
+    <meta property="og:image" content="{{ base_url | default('https://momo-fanhao-diary.example.com') }}/static/LOGO.png">
+    <meta property="og:url" content="{{ base_url | default('https://momo-fanhao-diary.example.com') }}/index_{{ lang }}.html">
+    <meta property="og:type" content="website">
+    {# Canonical Link #}
+    {# !! 請確認您的 base_url 或替換為絕對 URL !! #}
+    <link rel="canonical" href="{{ base_url | default('https://momo-fanhao-diary.example.com') }}/index_{{ lang }}.html">
+    <link rel="icon" href="static/favicon.png">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+                <a href="index_{{ lang }}.html">
+                    {{ 'Momo’s Fanhao Diary' if lang == 'en' else 'Momo 秘密番號小本本' }}
+                </a>
+            </div>
+        <nav class="main-nav">
+            <!-- Single Search Form -->
+            <form id="searchFormHeader" onsubmit="handleSearchSubmit(event); return false;">
+                 <input type="text" name="q" id="searchInputHeader" placeholder="{{ 'Enter number or actress name' if lang == 'en' else '輸入番號或女優名' }}">
+                 <button type="submit">{{ 'Search' if lang == 'en' else '搜尋' }}</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            <a href="index_zh.html" class="{% if lang == 'zh' %}active{% endif %}">中文</a> | <a href="index_en.html" class="{% if lang == 'en' %}active{% endif %}">English</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <main class="content"> <!-- Changed class to main.content -->
+            <section class="latest-reviews">
+                <h2>{{ 'Latest Reviews' if lang == 'en' else '最新心得列表' }}</h2>
+                {% if latest_static_pages %}
+                    {% for page in latest_static_pages %}
+                    <article class="card"> <!-- Changed class to card -->
+                        {# page.url is already relative path like videos/xxx_lang.html #}
+                        <a href="{{ page.url }}" class="card-link">
+                            {# Use placeholder image from static folder #}
+                            <img src="static/placeholder.jpg" alt="{{ page.display_name }}" class="card-image" style="filter: blur(5px);">
+                            <div class="card-content">
+                                <h3>{{ page.title }}</h3> {# Display the actual title #}
+                                <div class="card-meta">
+                                    <span class="meta-item">#{{ page.code }}</span> {# Display the code/ID #}
+                                    <span class="meta-item">{{ page.mtime.strftime('%Y-%m-%d') }}</span> {# Display date only #}
+                                </div>
+                                <div class="card-tags"> <!-- Changed class to card-tags -->
+                                    {% if page.tags %}
+                                        {% for tag in page.tags[:3] %} {# Display up to 3 tags #}
+                                            <span class="tag">{{ tag }}</span>
+                                        {% endfor %}
+                                    {% else %}
+                                        <span class="tag">{{ 'No Tags' if lang == 'en' else '無標籤' }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    {% endfor %}
+                {% else %}
+                    <p>{{ 'No static pages available yet.' if lang == 'en' else '目前尚無靜態心得頁面。' }}</p>
+                {% endif %}
+            </section>
+
+            <section class="ads-main-bottom">
+                <h3>{{ 'Ad Space (Main Bottom)' if lang == 'en' else '廣告位 (主內容底部)' }}</h3>
+                <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <section class="sidebar-card categories">
+                <h2>{{ 'Categories' if lang == 'en' else '文章分類' }}</h2>
+                <ul>
+                    {% if all_genres %}
+                        {% for genre in all_genres %}
+                            {# Link to static category pages in categories/ subfolder #}
+                            <li><a href="categories/{{ genre.replace(' ', '_').replace('/', '_') }}_{{ lang }}.html">{{ genre }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        <li>{{ 'No categories available.' if lang == 'en' else '尚無可用分類。' }}</li>
+                    {% endif %}
+                </ul>
+            </section>
+
+            <section class="sidebar-card popular-videos">
++                 <h2>{{ 'My Favorites' if lang == 'en' else '我的最愛' }}</h2>
++                 <ul id="favoritesList">
++                     <!-- Favorite items will be loaded here by JS -->
++                 </ul>
++             </section>
++
++             <section class="sidebar-card popular-videos">
+                  <h2>{{ 'Top 5 Favorites This Week (Static)' if lang == 'en' else '本週最愛番號 TOP 5 (靜態)' }}</h2>
+                  <ol>
+                      {% if top_5_favorites %}
+                        {% for page in top_5_favorites %}
+                            {# page.url is already relative path like videos/xxx_lang.html #}
+                            <li><a href="{{ page.url }}">{{ page.display_name }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        <li>{{ 'No favorites to display.' if lang == 'en' else '尚無最愛可顯示。' }}</li>
+                    {% endif %}
+                </ol>
+            </section>
+
+            <section class="ads-sidebar">
+                <h3>{{ 'Ad Space (Sidebar)' if lang == 'en' else '廣告位 (側邊欄)' }}</h3>
+                <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+            </section>
+        </aside>
+    </div>
+
+    <section class="disclaimer">
+        <h2>{{ 'Disclaimer' if lang == 'en' else '免責聲明' }}</h2>
+        {% if lang == 'zh' %}
+        <p>本網站僅作為AV心得分享與資源檢索工具，所有內容僅供學術交流與個人參考，並不存儲、製作、傳播任何非法或受版權保護的影音資源。</p>
+        <p>用戶應遵守當地法律法規，任何因使用本網站導致的法律責任由用戶自行承擔。</p>
+        <p>若有任何侵權或不當內容，請聯繫我們，我們將及時處理。</p>
+        {% else %}
+        <p>This website is for sharing AV reviews and providing resource search tools only. All content is for academic exchange and personal reference.</p>
+        <p>We do not store, produce, or distribute any illegal or copyrighted audiovisual materials.</p>
+        <p>Users must comply with local laws and regulations. Any legal responsibility arising from the use of this website shall be borne by the user.</p>
+        <p>If there is any infringement or inappropriate content, please contact us and we will handle it promptly.</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <section class="ads-footer">
+            <h3>{{ 'Ad Space (Footer)' if lang == 'en' else '廣告位 (頁尾)' }}</h3>
+            <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+        </section>
+        <p>&copy; 2024 {{ 'AV Review Sharing' if lang == 'en' else 'AV心得分享' }}</p>
+    </footer>
+    <script src="static/ad.js"></script>
+    <script>
+        // AvHub 搜尋功能 (Header)
+        function handleSearchSubmit(event) {
+            event.preventDefault(); // 防止表單提交
+            const queryInput = document.getElementById('searchInputHeader');
+            const query = queryInput ? queryInput.value.trim() : '';
+            if (query) {
+                const searchUrl = `https://avhub.pages.dev/search/${encodeURIComponent(query)}`;
+                window.open(searchUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        // 收藏功能
+        function updateFavoriteButtons() {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+            document.querySelectorAll('.favorite-button').forEach(button => {
+                const videoId = button.dataset.videoId;
+                if (favorites[videoId]) {
+                    button.classList.add('favorited');
+                    button.innerHTML = '♥ {{ 'Favorited' if lang == 'en' else '已收藏' }}';
+                } else {
+                    button.classList.remove('favorited');
+                    button.innerHTML = '♥ {{ 'Favorite this post' if lang == 'en' else '收藏這一篇' }}';
+                }
+            });
+        }
+
+        function toggleFavorite(videoId) {
+            let favorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+            if (favorites[videoId]) {
+                delete favorites[videoId];
+            } else {
+                // Store basic info, adjust as needed
+                const card = document.querySelector(`.card a[href*="${videoId}"]`);
+                const title = card ? card.querySelector('h3').innerText : 'Unknown Title';
+                favorites[videoId] = { title: title, added: new Date().toISOString() };
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateFavoriteButtons(); // Update all buttons on the page
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化搜尋表單
+            const searchForm = document.getElementById('searchFormHeader');
+            if (searchForm) {
+                const searchInput = searchForm.querySelector('input[name="q"]');
+                if(searchInput) searchInput.id = 'searchInputHeader'; // Ensure ID exists
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+
+            // 初始化收藏按鈕
+            updateFavoriteButtons();
+
+            // 為收藏按鈕添加事件監聽器 (使用事件委派)
+            document.querySelector('main')?.addEventListener('click', function(event) {
+                if (event.target.classList.contains('favorite-button')) {
+                    const videoId = event.target.dataset.videoId;
+                    if (videoId) {
+                        toggleFavorite(videoId);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

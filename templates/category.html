@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category_name }} - {{ 'Category' if lang == 'en' else '分類' }} - {{ 'AV Review Sharing' if lang == 'en' else 'AV心得分享' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+                <a href="{{ url_for('index', lang=lang) }}">
+                    <img src="{{ url_for('static', filename='LOGO.png') }}" alt="Momo’s Fanhao Diary Logo" style="height: 50px;"> <!-- Adjust height as needed -->
+                </a>
+            </div>
+        <nav class="main-nav">
+            <form action="{{ url_for('search_redirect') }}" method="get">
+                <input type="hidden" name="lang" value="{{ lang }}">
+                <input type="text" name="q" placeholder="{{ 'Enter number or actress name' if lang == 'en' else '輸入番號或女優名' }}">
+                <button type="submit">{{ 'Search' if lang == 'en' else '搜尋' }}</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            <a href="{{ url_for('category', category_name=category_name, lang='zh') }}">中文</a> | <a href="{{ url_for('category', category_name=category_name, lang='en') }}">English</a>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="category-title">{{ 'Category' if lang == 'en' else '分類' }}: {{ category_name }}</h1>
+
+        <section class="category-filters">
+            <h3>{{ 'Filters' if lang == 'en' else '篩選條件' }}</h3>
+            <!-- 可加篩選器 (如: 年份 / 女優) -->
+            <p>{{ '(Filters can be added here, e.g., by year or actress)' if lang == 'en' else '提供使用者篩選 (視狀況加入)' }}</p>
+        </section>
+
+        <section class="category-articles">
+            <h2>{{ 'Articles in this category' if lang == 'en' else '該類別所有文章' }}</h2>
+            {% if articles %}
+                {% for article in articles %}
+                <article class="review-card">
+                    <a href="{{ url_for('detail', video_id=article.id, lang=lang) }}">
+                        <img src="{{ article.cover_image if article.cover_image else url_for('static', filename='placeholder.jpg') }}" alt="{{ article.title }}" class="review-cover">
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.summary }}</p> <!-- Assuming summary exists -->
+                        <div class="tags">
+                                {% if article.id %}<span class="tag">#{{ article.id }}</span>{% endif %}
+                                {% if article.actress and article.actress[0] %}<span class="tag">{{ article.actress[0] }}</span>{% endif %} <!-- Display first actress -->
+                                {# Add theme tags if available #}
+                        </div>
+                    </a>
+                </article>
+                {% endfor %}
+            {% else %}
+                <p>{{ 'No articles found in this category.' if lang == 'en' else '此分類下找不到文章。' }}</p>
+            {% endif %}
+        </section>
+
+        <section class="ads-category-middle">
+            <h3>{{ 'Ad Space (Middle)' if lang == 'en' else '廣告位 (內容中段)' }}</h3>
+            <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+        </section>
+
+        <section class="ads-category-bottom">
+            <h3>{{ 'Ad Space (Bottom)' if lang == 'en' else '廣告位 (內容底部)' }}</h3>
+            <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+        </section>
+    </main>
+
+    <footer>
+        <section class="ads-footer">
+            <h3>{{ 'Ad Space (Footer)' if lang == 'en' else '廣告位 (頁尾)' }}</h3>
+            <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+        </section>
+        <p>&copy; 2024 {{ 'AV Review Sharing' if lang == 'en' else 'AV心得分享' }}</p>
+    </footer>
+</body>
+</html>

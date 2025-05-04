@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ 'Searching...' if lang == 'en' else '正在搜尋...' }}</title>
+    <!-- 插入廣告或倒數3秒 -->
+    <!-- 注意：這裡的 q=SSIS-123 是範例，實際應動態替換為使用者搜尋的關鍵字 -->
+    <meta http-equiv="refresh" content="3; url=https://avhub.pages.dev/search?q={{ query }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <p>{{ 'Searching for you, please wait...' if lang == 'en' else '正在為您搜尋，請稍候...' }}</p>
+    <!-- 可以在這裡放置廣告 -->
+</body>
+</html>

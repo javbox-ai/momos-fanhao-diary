@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'Homepage - Momo’s Fanhao Diary | Secret AV Reviews' if lang == 'en' else '首頁 - Momo 秘密番號小本本 | AV 心得分享' }}</title>
+    <meta name="description" content="{{ 'Explore Momo’s secret diary of JAV reviews, latest updates, favorite actresses, and popular categories. Your go-to place for honest and fun AV insights.' if lang == 'en' else '探索 Momo 的秘密番號小本本，這裡有最新的 JAV 心得、最愛女優、熱門分類。您尋找真實有趣的 AV 見解的最佳去處。' }}">
+    <meta name="robots" content="index, follow">
+    {# Open Graph Meta Tags #}
+    <meta property="og:title" content="{{ 'Homepage - Momo’s Fanhao Diary | Secret AV Reviews' if lang == 'en' else '首頁 - Momo 秘密番號小本本 | AV 心得分享' }}">
+    <meta property="og:description" content="{{ 'Explore Momo’s secret diary of JAV reviews and insights.' if lang == 'en' else '探索 Momo 的秘密番號小本本，獲取 JAV 心得與見解。' }}">
+    <meta property="og:image" content="{{ url_for('static', filename='LOGO.png', _external=True) }}"> {# Use absolute URL for OG image #}
+    <meta property="og:url" content="{{ url_for('index', lang=lang, _external=True) }}">
+    <meta property="og:type" content="website">
+    {# Canonical Link #}
+    <link rel="canonical" href="{{ url_for('index', lang=lang, _external=True) }}">
+    <link rel="icon" href="static/favicon.png">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+                <a href="index_{{ lang }}.html">
+                    <img src="static/LOGO.png" alt="Momo’s Fanhao Diary Logo" style="height: 50px;"> <!-- Adjust height as needed -->
+                </a>
+            </div>
+        <nav class="main-nav">
+            <form method="get"> <!-- Removed dynamic action -->
+                <input type="hidden" name="lang" value="{{ lang }}">
+-                 <input type="text" name="q" placeholder="{{ 'Enter number or actress name' if lang == 'en' else '輸入番號或女優名' }}">
++                 <input type="text" name="q" id="searchInputHeader" placeholder="{{ 'Enter number or actress name' if lang == 'en' else '輸入番號或女優名' }}">
+                  <button type="submit">{{ 'Search' if lang == 'en' else '搜尋' }}</button>
+              </form>
+          </nav>
+        <div class="language-switcher">
+            <a href="index_zh.html" class="{% if lang == 'zh' %}active{% endif %}">中文</a> | <a href="index_en.html" class="{% if lang == 'en' %}active{% endif %}">English</a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <main class="content"> <!-- Changed class to main.content -->
+            <section class="latest-reviews">
+                <h2>{{ 'Latest Static Pages' if lang == 'en' else '最新心得列表 (靜態)' }}</h2>
+                {% if latest_static_pages %}
+                    {% for page in latest_static_pages %}
+                    <article class="card"> <!-- Changed class to card -->
+                        {# 使用 page.url 和 page.display_name #}
+                        <a href="{{ page.url }}" class="card-link"> <!-- Changed class to card-link -->
+                            {# 靜態頁面通常沒有獨立的封面圖，可以考慮顯示分類圖或預設圖 #}
+                            <img src="static/placeholder.jpg" alt="{{ page.display_name }}" class="card-image" style="filter: blur(5px);"> <!-- Added blur -->
+                            <div class="card-content"> <!-- Changed class to card-content -->
+                                <h3>{{ page.display_name }}</h3>
+                                <div class="card-tags"> <!-- Changed class to card-tags -->
+                                    <span class="tag">{{ page.lang }}</span>
+                                    {# 可以考慮從檔名或其他地方解析更多標籤 #}
+                                </div>
+                                {# 靜態頁面沒有摘要，可以顯示生成時間或其他資訊 #}
+                                <p>{{ 'Generated on' if lang == 'en' else '生成於' }}: {{ page.mtime.strftime('%Y-%m-%d %H:%M') }}</p>
+                            </div>
+                        </a>
+                    </article>
+                    {% endfor %}
+                {% else %}
+                    <p>{{ 'No static pages available yet.' if lang == 'en' else '目前尚無靜態心得頁面。' }}</p>
+                {% endif %}
+            </section>
+
+            <section class="ads-main-bottom">
+                <h3>{{ 'Ad Space (Main Bottom)' if lang == 'en' else '廣告位 (主內容底部)' }}</h3>
+                <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <section class="sidebar-card categories">
+                <h2>{{ 'Categories' if lang == 'en' else '文章分類' }}</h2>
+                <ul>
+                    {% if all_genres %}
+                        {% for genre in all_genres %}
+                            {# 連結到靜態頁面，使用 static_page_serve 端點 #}
+                            <li><a href="categories/{{ genre.replace(' ', '_').replace('/', '_') }}_{{ lang }}.html">{{ genre }}</a></li> <!-- Changed to static category link pointing to subfolder -->
+                        {% endfor %}
+                    {% else %}
+                        <li>{{ 'No categories available.' if lang == 'en' else '尚無可用分類。' }}</li>
+                    {% endif %}
+                </ul>
+            </section>
+
+            <section class="sidebar-card popular-videos">
++                 <h2>{{ 'My Favorites' if lang == 'en' else '我的最愛' }}</h2>
++                 <ul id="favoritesList">
++                     <!-- Favorite items will be loaded here by JS -->
++                 </ul>
++             </section>
++
++             <section class="sidebar-card popular-videos">
+                  <h2>{{ 'Top 5 Favorites This Week (Static)' if lang == 'en' else '本週最愛番號 TOP 5 (靜態)' }}</h2>
+                  <ol>
+                      {% if top_5_favorites %}
+                        {% for page in top_5_favorites %}
+                            <li><a href="{{ page.url }}">{{ page.display_name }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        <li>{{ 'No favorites to display.' if lang == 'en' else '尚無最愛可顯示。' }}</li>
+                    {% endif %}
+                </ol>
+            </section>
+
+            <section class="ads-sidebar">
+                <h3>{{ 'Ad Space (Sidebar)' if lang == 'en' else '廣告位 (側邊欄)' }}</h3>
+                <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+            </section>
+        </aside>
+    </div>
+
+    <section class="disclaimer">
+        <h2>{{ 'Disclaimer' if lang == 'en' else '免責聲明' }}</h2>
+        {% if lang == 'zh' %}
+        <p>本網站僅作為AV心得分享與資源檢索工具，所有內容僅供學術交流與個人參考，並不存儲、製作、傳播任何非法或受版權保護的影音資源。</p>
+        <p>用戶應遵守當地法律法規，任何因使用本網站導致的法律責任由用戶自行承擔。</p>
+        <p>若有任何侵權或不當內容，請聯繫我們，我們將及時處理。</p>
+        {% else %}
+        <p>This website is for sharing AV reviews and providing resource search tools only. All content is for academic exchange and personal reference.</p>
+        <p>We do not store, produce, or distribute any illegal or copyrighted audiovisual materials.</p>
+        <p>Users must comply with local laws and regulations. Any legal responsibility arising from the use of this website shall be borne by the user.</p>
+        <p>If there is any infringement or inappropriate content, please contact us and we will handle it promptly.</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <section class="ads-footer">
+            <h3>{{ 'Ad Space (Footer)' if lang == 'en' else '廣告位 (頁尾)' }}</h3>
+            <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+        </section>
+        <p>&copy; 2024 {{ 'AV Review Sharing' if lang == 'en' else 'AV心得分享' }}</p>
+    </footer>
+    <!-- Add JS for interactions if needed -->
+    {# <script src="static/script.js"></script> #}
++     <script>
++         // AvHub 搜尋功能 (Header)
++         function handleSearchSubmit(event) {
++             event.preventDefault(); // 防止表單提交
++             const query = document.getElementById('searchInputHeader').value.trim();
++             if (query) {
++                 const searchUrl = `https://avhub.pages.dev/search/${encodeURIComponent(query)}`;
++                 window.open(searchUrl, '_blank', 'noopener,noreferrer');
++             }
++         }
++
++         // 讀取並顯示我的最愛
++         function loadFavorites() {
++             const favorites = JSON.parse(localStorage.getItem('favoriteVideos') || '[]');
++             const favoritesList = document.getElementById('favoritesList');
++             const lang = document.documentElement.lang;
++             favoritesList.innerHTML = ''; // 清空列表
++
++             if (favorites.length === 0) {
++                 favoritesList.innerHTML = `<li>${(lang === 'en') ? 'No favorites added yet.' : '尚未加入任何最愛。'}</li>`;
++                 return;
++             }
++
++             favorites.forEach(videoId => {
++                 // 假設靜態頁面命名規則為 videoId_lang.html 且在 output 資料夾下
++                 // 注意：這裡需要知道靜態頁面的確切路徑結構
++                 // 假設 index.html 在根目錄，靜態 detail 頁在 output/ 下
++                 const videoUrl = `output/${videoId}_${lang}.html`;
++                 const listItem = document.createElement('li');
++                 const link = document.createElement('a');
++                 link.href = videoUrl;
++                 link.textContent = videoId; // 顯示 ID，或者需要額外方法獲取標題
++                 listItem.appendChild(link);
++                 favoritesList.appendChild(listItem);
++             });
++         }
++
++         document.addEventListener('DOMContentLoaded', function() {
++             // 初始化搜尋表單
++             const searchForm = document.querySelector('.main-nav form'); // 使用更通用的選擇器
++             if (searchForm) {
++                 // 將 ID 添加到表單和輸入框以便 JS 選取
++                 searchForm.id = 'searchFormHeader';
++                 const searchInput = searchForm.querySelector('input[name="q"]');
++                 if (searchInput) searchInput.id = 'searchInputHeader';
++
++                 searchForm.addEventListener('submit', handleSearchSubmit);
++             }
++
++             // 載入我的最愛
++             loadFavorites();
++         });
++     </script>
+  </body>
+  </html>

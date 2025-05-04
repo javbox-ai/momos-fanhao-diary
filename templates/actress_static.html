@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ actress_name }} - {{ 'Actress Page | Momo’s Fanhao Diary' if lang == 'en' else '女優頁面 | Momo 秘密番號小本本' }}</title>
+    <meta name="description" content="{{ ('Explore all works featuring actress %s on Momo’s Fanhao Diary. Find video codes and titles.' % actress_name) if lang == 'en' else ('在 Momo 秘密番號小本本探索女優 %s 的所有作品。查找影片番號和標題。' % actress_name) }}">
+    <meta name="robots" content="index, follow">
+    {# Open Graph Meta Tags #}
+    <meta property="og:title" content="{{ actress_name }} - {{ 'Actress Page | Momo’s Fanhao Diary' if lang == 'en' else '女優頁面 | Momo 秘密番號小本本' }}">
+    <meta property="og:description" content="{{ ('Explore works featuring %s on Momo’s Fanhao Diary.' % actress_name) if lang == 'en' else ('在 Momo 秘密番號小本本探索 %s 的作品。' % actress_name) }}">
+    {# Assuming a generic actress image or no specific image #}
+-   <meta property="og:image" content="{{ base_url }}/static/LOGO.png"> {# Use site logo as fallback #}
+-   <meta property="og:url" content="{{ base_url }}/actresses/{{ actress_filename }}">
++   <meta property="og:image" content="https://momo-fanhao-diary.example.com/static/LOGO.png"> {# !! 請替換 momo-fanhao-diary.example.com !! #}
++   <meta property="og:url" content="https://momo-fanhao-diary.example.com/actresses/{{ actress_filename }}"> {# !! 請替換 momo-fanhao-diary.example.com !! #}
+    <meta property="og:type" content="profile">
+    {# Canonical Link #}
+-   <link rel="canonical" href="{{ base_url }}/actresses/{{ actress_filename }}">
++   <link rel="canonical" href="https://momo-fanhao-diary.example.com/actresses/{{ actress_filename }}"> {# !! 請替換 momo-fanhao-diary.example.com !! #}
+    <link rel="icon" href="../../static/favicon.png"> <!-- Favicon relative path from actresses/ -->
+    <link rel="stylesheet" href="../../static/style.css"> <!-- CSS relative path from actresses/ -->
+    <style>
+        /* Add specific styles for actress page if needed */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+             <!-- Use breadcrumb home link -->
+             <a href="{{ breadcrumb_home_link }}" style="text-decoration: none; color: inherit; font-size: 1.5em; font-weight: bold;"> 
+                 {{ 'Momo’s Fanhao Diary' if lang == 'en' else 'Momo 秘密番號小本本' }}
+             </a>
+        </div>
+        <nav class="main-nav">
+            <!-- Single Search Form -->
+            <form id="searchFormHeader" onsubmit="handleSearchSubmit(event); return false;">
+                <input type="text" name="q" id="searchInputHeader" placeholder="{{ 'Enter number or actress name' if lang == 'en' else '輸入番號或女優名' }}">
+                <button type="submit">{{ 'Search' if lang == 'en' else '搜尋' }}</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            {% set other_lang = 'en' if lang == 'zh' else 'zh' %}
+            {# Links are relative within the actresses directory #}
+            <a href="{{ actress_filename_zh }}" class="{% if lang == 'zh' %}active{% endif %} lang-zh">中文</a> | <a href="{{ actress_filename_en }}" class="{% if lang == 'en' %}active{% endif %} lang-en">English</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ breadcrumb_home_link }}">{{ 'Homepage' if lang == 'en' else '首頁' }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ actress_name }}</li>
+            </ol>
+        </nav>
+
+        <h1>{{ actress_name }}</h1>
+        <p>{{ 'List of reviews featuring this actress.' if lang == 'en' else '包含這位女優的心得列表。' }}</p>
+
+    <main>
+        <section class="video-list">
+            <h2>{{ 'Reviewed Videos' if lang == 'en' else '已撰寫心得的影片' }}</h2>
+            {% if videos %}
+                <ul>
+                    {% for video in videos %}
+                        <li>
+                            {# Link to the static detail page #}
+                            <a href="{{ video.link_zh if lang == 'zh' else video.link_en }}" class="card-link">
+                                {{ video.title }} ({{ video.code }})
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>{{ 'No reviews found for this actress yet.' if lang == 'en' else '尚未找到這位女優的心得。' }}</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <section class="disclaimer">
+        <h2>{{ 'Disclaimer' if lang == 'en' else '免責聲明' }}</h2>
+        {% if lang == 'zh' %}
+        <p>本網站僅作為AV心得分享與資源檢索工具，所有內容僅供學術交流與個人參考，並不存儲、製作、傳播任何非法或受版權保護的影音資源。</p>
+        <p>用戶應遵守當地法律法規，任何因使用本網站導致的法律責任由用戶自行承擔。</p>
+        <p>若有任何侵權或不當內容，請聯繫我們，我們將及時處理。</p>
+        {% else %}
+        <p>This website is for sharing AV reviews and providing resource search tools only. All content is for academic exchange and personal reference.</p>
+        <p>We do not store, produce, or distribute any illegal or copyrighted audiovisual materials.</p>
+        <p>Users must comply with local laws and regulations. Any legal responsibility arising from the use of this website shall be borne by the user.</p>
+        <p>If there is any infringement or inappropriate content, please contact us and we will handle it promptly.</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>&copy; {{ current_year }} {{ "Momo's Reviews" if lang == 'en' else 'Momo 的心得筆記' }}. {{ 'All rights reserved.' if lang == 'en' else '版權所有。' }}</p>
+        <p>{{ 'Advertisement' if lang == 'en' else '廣告' }}</p>
+    </footer>
+    <script>
+        // AvHub 搜尋功能 (Header)
+        function handleSearchSubmit(event) {
+            event.preventDefault(); // 防止表單提交
+            const query = document.getElementById('searchInputHeader').value.trim();
+            if (query) {
+                const searchUrl = `https://avhub.pages.dev/search/${encodeURIComponent(query)}`;
+                window.open(searchUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化搜尋表單
+            const searchForm = document.querySelector('.main-nav form');
+            if (searchForm) {
+                searchForm.id = 'searchFormHeader'; // Add ID if not present
+                const searchInput = searchForm.querySelector('input[name="q"]');
+                if (searchInput) searchInput.id = 'searchInputHeader'; // Add ID if not present
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+        });
+    </script>
+</body>
+</html>
