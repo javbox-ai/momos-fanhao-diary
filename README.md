@@ -1,4 +1,4 @@
-# AV 心得分享網站
+# momos-fanhao-diary
 
 這是一個使用 Flask 和 Jinja2 建立的 AV 心得分享網站，並可以生成靜態頁面。
 

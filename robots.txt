@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://momo-fanhao-diary.example.com/sitemap.xml
+# 請記得將 momo-fanhao-diary.example.com 替換為您的實際網域名稱

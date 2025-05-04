@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飯倉芽衣 - 女優頁面 | Momo 秘密番號小本本</title>
+    <meta name="description" content="在 Momo 秘密番號小本本探索女優 飯倉芽衣 的所有作品。查找影片番號和標題。">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="飯倉芽衣 - 女優頁面 | Momo 秘密番號小本本">
+    <meta property="og:description" content="在 Momo 秘密番號小本本探索 飯倉芽衣 的作品。">
+    
+-   <meta property="og:image" content="/static/LOGO.png"> 
+-   <meta property="og:url" content="/actresses/">
++   <meta property="og:image" content="https://momo-fanhao-diary.example.com/static/LOGO.png"> 
++   <meta property="og:url" content="https://momo-fanhao-diary.example.com/actresses/"> 
+    <meta property="og:type" content="profile">
+    
+-   <link rel="canonical" href="/actresses/">
++   <link rel="canonical" href="https://momo-fanhao-diary.example.com/actresses/"> 
+    <link rel="icon" href="../../static/favicon.png"> <!-- Favicon relative path from actresses/ -->
+    <link rel="stylesheet" href="../../static/style.css"> <!-- CSS relative path from actresses/ -->
+    <style>
+        /* Add specific styles for actress page if needed */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+             <!-- Use breadcrumb home link -->
+             <a href="../../index_zh.html"> 
+                 <img src="../../static/LOGO.png" alt="Momo’s Fanhao Diary Logo" style="height: 50px;">
+             </a>
+        </div>
+        <nav class="main-nav">
+            <!-- Search Form -->
+            <form id="searchFormHeader">
+                <input type="text" name="q" id="searchInputHeader" placeholder="輸入番號或女優名">
+                <button type="submit">搜尋</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            
+            
+            <a href="" class="active lang-zh">中文</a> | <a href="" class=" lang-en">English</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index_zh.html">首頁</a></li>
+                <li class="breadcrumb-item active" aria-current="page">飯倉芽衣</li>
+            </ol>
+        </nav>
+
+        <h1>飯倉芽衣</h1>
+        <p>包含這位女優的心得列表。</p>
+
+    <main>
+        <section class="video-list">
+            <h2>已撰寫心得的影片</h2>
+            
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="../../videos/juy-596_zh.html" class="card-link">
+                                JUY-596 不發出聲音就在舔陰中扭動的已婚婦女護理 Mei Iikura - 飯倉芽衣 (juy-596)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/kmhr-037_zh.html" class="card-link">
+                                KMHR-037 Mei Iikura 24 歲 結婚前一天接受別人的精子，我愛上了你......訂婚時我的心砰砰直跳 到我家拜訪第 3 章 與婚前一天親密接觸的 SEX - 飯倉芽衣 (kmhr-037)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/kmhr-031_zh.html" class="card-link">
+                                KMHR-031 太想哭了，我愛上你了... 飯倉明24歲 解除婚禁陰道射精禁令 第2章 婚前1個月 人生第一次在溫泉旅館狂歡 - 飯倉芽衣 (kmhr-031)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/kmhr-028_zh.html" class="card-link">
+                                KMHR-028 SEX的時候舒服的哭了，我愛上你了... 飯倉梅24歲AV出道訂婚第1章婚前2個月除男友以外的第一個SEX - 飯倉芽衣 (kmhr-028)
+                            </a>
+                        </li>
+                    
+                </ul>
+            
+        </section>
+    </main>
+
+    <section class="disclaimer">
+        <h2>免責聲明</h2>
+        
+        <p>本網站僅作為AV心得分享與資源檢索工具，所有內容僅供學術交流與個人參考，並不存儲、製作、傳播任何非法或受版權保護的影音資源。</p>
+        <p>用戶應遵守當地法律法規，任何因使用本網站導致的法律責任由用戶自行承擔。</p>
+        <p>若有任何侵權或不當內容，請聯繫我們，我們將及時處理。</p>
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Momo 的心得筆記. 版權所有。</p>
+        <p>廣告</p>
+    </footer>
+    <script>
+        // AvHub 搜尋功能 (Header)
+        function handleSearchSubmit(event) {
+            event.preventDefault(); // 防止表單提交
+            const query = document.getElementById('searchInputHeader').value.trim();
+            if (query) {
+                const searchUrl = `https://avhub.pages.dev/search/${encodeURIComponent(query)}`;
+                window.open(searchUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化搜尋表單
+            const searchForm = document.querySelector('.main-nav form');
+            if (searchForm) {
+                searchForm.id = 'searchFormHeader'; // Add ID if not present
+                const searchInput = searchForm.querySelector('input[name="q"]');
+                if (searchInput) searchInput.id = 'searchInputHeader'; // Add ID if not present
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河田結衣 - Actress Page | Momo’s Fanhao Diary</title>
+    <meta name="description" content="Explore all works featuring actress 河田結衣 on Momo’s Fanhao Diary. Find video codes and titles.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="河田結衣 - Actress Page | Momo’s Fanhao Diary">
+    <meta property="og:description" content="Explore works featuring 河田結衣 on Momo’s Fanhao Diary.">
+    
+-   <meta property="og:image" content="/static/LOGO.png"> 
+-   <meta property="og:url" content="/actresses/">
++   <meta property="og:image" content="https://momo-fanhao-diary.example.com/static/LOGO.png"> 
++   <meta property="og:url" content="https://momo-fanhao-diary.example.com/actresses/"> 
+    <meta property="og:type" content="profile">
+    
+-   <link rel="canonical" href="/actresses/">
++   <link rel="canonical" href="https://momo-fanhao-diary.example.com/actresses/"> 
+    <link rel="icon" href="../../static/favicon.png"> <!-- Favicon relative path from actresses/ -->
+    <link rel="stylesheet" href="../../static/style.css"> <!-- CSS relative path from actresses/ -->
+    <style>
+        /* Add specific styles for actress page if needed */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+             <!-- Use breadcrumb home link -->
+             <a href="../../index_en.html"> 
+                 <img src="../../static/LOGO.png" alt="Momo’s Fanhao Diary Logo" style="height: 50px;">
+             </a>
+        </div>
+        <nav class="main-nav">
+            <!-- Search Form -->
+            <form id="searchFormHeader">
+                <input type="text" name="q" id="searchInputHeader" placeholder="Enter number or actress name">
+                <button type="submit">Search</button>
+            </form>
+        </nav>
+        <div class="language-switcher">
+            
+            
+            <a href="" class=" lang-zh">中文</a> | <a href="" class="active lang-en">English</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index_en.html">Homepage</a></li>
+                <li class="breadcrumb-item active" aria-current="page">河田結衣</li>
+            </ol>
+        </nav>
+
+        <h1>河田結衣</h1>
+        <p>List of reviews featuring this actress.</p>
+
+    <main>
+        <section class="video-list">
+            <h2>Reviewed Videos</h2>
+            
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdmu-054_en.html" class="card-link">
+                                SDMU-054 SOD女社員 廣告部1年 坂上茜失貞 SOD招牌少女Vol.3 - 河田結衣 (sdmu-054)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdmu-078_en.html" class="card-link">
+                                SDMU-078 SOD女員工第2年加入廣告部Haru Hara覺醒SOD招牌女孩Vol.5新員工Izumi Kato Miki Hayashi請讓我進入廣告部...... SOD招牌女孩Vol.6 - 加藤いづみ (sdmu-078)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdmu-071_en.html" class="card-link">
+                                SDMU-071 2014 Soft On Demand 入職儀式 我在4月份加入了一家叫Soft On Demand的公司... - 河田結衣 (sdmu-071)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdmu-065_en.html" class="card-link">
+                                SDMU-065 SOD 廣告部淺野惠美 x Haru Hara x Yui Kawada “我們脫掉你的皮膚” SOD 招牌女孩 Vol.4 (sdmu-065)
+                            </a>
+                        </li>
+                    
+                        <li>
+                            
+                            <a href="../../videos/sdmu-029_en.html" class="card-link">
+                                SDMU-029 SOD女員工三位剛入職公司第一年在其他部門很受歡迎的應屆畢業生入選！ !!原製作部原春原總務部川田由衣原會計部坂上茜“很高興認識你，我們是新的SOD廣告部。”SOD招牌女孩Vol.1 - 櫻井彩 (sdmu-029)
+                            </a>
+                        </li>
+                    
+                </ul>
+            
+        </section>
+    </main>
+
+    <section class="disclaimer">
+        <h2>Disclaimer</h2>
+        
+        <p>This website is for sharing AV reviews and providing resource search tools only. All content is for academic exchange and personal reference.</p>
+        <p>We do not store, produce, or distribute any illegal or copyrighted audiovisual materials.</p>
+        <p>Users must comply with local laws and regulations. Any legal responsibility arising from the use of this website shall be borne by the user.</p>
+        <p>If there is any infringement or inappropriate content, please contact us and we will handle it promptly.</p>
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Momo's Reviews. All rights reserved.</p>
+        <p>Advertisement</p>
+    </footer>
+    <script>
+        // AvHub 搜尋功能 (Header)
+        function handleSearchSubmit(event) {
+            event.preventDefault(); // 防止表單提交
+            const query = document.getElementById('searchInputHeader').value.trim();
+            if (query) {
+                const searchUrl = `https://avhub.pages.dev/search/${encodeURIComponent(query)}`;
+                window.open(searchUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化搜尋表單
+            const searchForm = document.querySelector('.main-nav form');
+            if (searchForm) {
+                searchForm.id = 'searchFormHeader'; // Add ID if not present
+                const searchInput = searchForm.querySelector('input[name="q"]');
+                if (searchInput) searchInput.id = 'searchInputHeader'; // Add ID if not present
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+        });
+    </script>
+</body>
+</html>
