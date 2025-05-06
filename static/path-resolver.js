@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 更新所有圖標鏈接
     updateResourcePaths('link[rel="icon"]', 'href', pathPrefix);
     
-    // 更新所有超鏈接（僅限於以static開頭的相對路徑）
-    updateResourcePaths('a[href^="static/"]', 'href', pathPrefix);
+    // 更新所有超鏈接（不僅限於以static開頭的相對路徑）
+    updateResourcePaths('a:not([href^="http"]):not([href^="#"]):not([href^="mailto:"])', 'href', pathPrefix);
     
     // 更新所有表單動作（僅限於以static開頭的相對路徑）
     updateResourcePaths('form[action^="static/"]', 'action', pathPrefix);
@@ -102,8 +102,23 @@ function updateResourcePaths(selector, attribute, pathPrefix) {
     const elements = document.querySelectorAll(selector);
     elements.forEach(function(element) {
         const originalPath = element.getAttribute(attribute);
-        if (originalPath && originalPath.startsWith('static/')) {
-            // 只更新以static/開頭的相對路徑
+        if (!originalPath || originalPath.startsWith('http') || originalPath.startsWith('//') || originalPath.startsWith('#') || originalPath.startsWith('mailto:')) {
+            return;
+        }
+        
+        // 處理以/開頭的路徑（絕對路徑）
+        if (originalPath.startsWith('/')) {
+            // 對於GitHub Pages，保留以/momos-fanhao-diary開頭的路徑
+            if (originalPath.startsWith('/momos-fanhao-diary/')) {
+                return;
+            }
+            // 移除開頭的/，然後添加前綴
+            const newPath = pathPrefix + originalPath.substring(1);
+            element.setAttribute(attribute, newPath);
+        }
+        // 處理相對路徑
+        else if (!originalPath.startsWith('./') && !originalPath.startsWith('../')) {
+            // 如果路徑不是以./或../開頭，添加前綴
             const newPath = pathPrefix + originalPath;
             element.setAttribute(attribute, newPath);
         }
