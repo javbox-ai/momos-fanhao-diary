@@ -1,4 +1,4 @@
-/* 基本樣式 */
+﻿/* 基本樣式 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Kalam:wght@400;700&family=Poppins:wght@600&family=Comic+Neue:wght@700&family=Segoe+UI&display=swap'); /* 引入字體, 加入 Kalam 400 */
 
 body {
@@ -33,7 +33,7 @@ header {
     font-size: 1.4rem; /* 調整 Logo 大小 */
     font-weight: bold; /* 加粗 */
     font-family: 'Poppins', sans-serif; /* 使用 Poppins - 根據參考 CSS */
-    color: #005A9C; /* 深藍色 */
+    color: #FF69B4; /* 桃紅色 */
     text-decoration: none;
     line-height: 1;
 }
@@ -94,7 +94,7 @@ nav.main-nav button:hover {
 
 .language-switcher a.active {
     font-weight: bold;
-    color: #005A9C; /* 深藍色 */
+    color: #FF69B4; /* 桃紅色 */
 }
 
 /* 主內容區容器 */
