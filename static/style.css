@@ -33,7 +33,7 @@ header {
     font-size: 1.4rem; /* 調整 Logo 大小 */
     font-weight: bold; /* 加粗 */
     font-family: 'Poppins', sans-serif; /* 使用 Poppins - 根據參考 CSS */
-    color: #FF69B4; /* 粉色 */
+    color: #005A9C; /* 深藍色 */
     text-decoration: none;
     line-height: 1;
 }
@@ -94,7 +94,7 @@ nav.main-nav button:hover {
 
 .language-switcher a.active {
     font-weight: bold;
-    color: #FF69B4; /* 粉色 */
+    color: #005A9C; /* 深藍色 */
 }
 
 /* 主內容區容器 */
