@@ -1,0 +1,24 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 或者您的主要分支名稱
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./static_site # 指定要發布的目錄
+          publish_branch: gh-pages # 指定發布到的分支
+          cname: # 如果您有自訂域名，請取消註解並填寫，例如：javbox.ai
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy static site to gh-pages'
