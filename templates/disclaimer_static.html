@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if lang == 'cn' %}
+    <title>{{ seo.title_cn | default('免責聲明 | Fanhao Diary', true) }}</title>
+    <meta name="description" content="{{ seo.meta_description_cn | default('Fanhao Diary 網站免責聲明。', true) }}">
+    {% else %}
+    <title>{{ seo.title_en | default('Disclaimer | Fanhao Diary', true) }}</title>
+    <meta name="description" content="{{ seo.meta_description_en | default('Disclaimer for the Fanhao Diary website.', true) }}">
+    {% endif %}
+    <link rel="stylesheet" href="{{ path_css }}">
+    <link rel="icon" href="{{ path_favicon }}" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <a href="{{ 'index_cn.html' if lang == 'cn' else 'index_en.html' }}" class="logo-text">Fanhao Diary</a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="{{ '搜尋...' if lang == 'cn' else 'Search...' }}">
+        </div>
+        <div class="language-switcher">
+            <a href="{{ alternate_lang_url }}" class="button lang-switch-btn">
+                {% if lang == 'cn' %}Read in English{% else %}閱讀中文版{% endif %}
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb card">
+                <li class="breadcrumb-item"><a href="{{ 'index_cn.html' if lang == 'cn' else 'index_en.html' }}">{{ '首頁' if lang == 'cn' else 'Home' }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ page_title }}</li>
+            </ol>
+        </nav>
+
+        <h1 class="page-main-title">{{ page_title }}</h1>
+
+        <section class="disclaimer-section card" style="margin-top: 20px;">
+            <!-- The title h2 is optional here as h1 is present -->
+            <!-- <h2 class="disclaimer-title">{% if lang == 'cn' %}免責聲明{% else %}Disclaimer{% endif %}</h2> -->
+            <p class="disclaimer-text">
+                {% if lang == 'cn' %}
+                本網站內容完全來自網際網路，僅供測試交流，並無任何資源儲存於本站。若有內容不慎侵犯您的權益，請聯繫我們並提供相關證明，我們將盡快處理。瀏覽本站內容時，您應自行判斷其合法性、正確性及完整性，若因相關內容引致任何損失，本站恕不負責。
+                <br><br>
+                本站所有內容（包括但不限於文字、圖片、音訊、影片等）僅供個人學習、研究或欣賞用途，禁止用於任何商業目的。訪問者在複製、下載、傳播或使用本站任何內容時，應自行遵守著作權法等相關法律規定，不得侵犯本站及相關權利人的合法權益。
+                <br><br>
+                本站不保證所有資訊的準確性和完整性，也不對因資訊的不正確或遺漏導致的任何損失或損害承擔責任。任何透過使用本站內容而採取的行動，訪問者應自行承擔風險。
+                {% else %}
+                The content on this website is sourced entirely from the internet for testing and communication purposes only. No resources are stored on this site. If any content inadvertently infringes upon your rights, please contact us with relevant proof, and we will address it promptly. When browsing content on this site, you should independently assess its legality, accuracy, and completeness. This site is not liable for any losses incurred due to such content.
+                <br><br>
+                All content on this site (including but not limited to text, images, audio, video, etc.) is for personal learning, research, or appreciation purposes only and is prohibited for any commercial use. Visitors should comply with copyright laws and other relevant legal provisions when copying, downloading, disseminating, or using any content from this site, and must not infringe upon the legal rights of this site and related rights holders.
+                <br><br>
+                This site does not guarantee the accuracy and completeness of all information, nor does it assume responsibility for any loss or damage caused by incorrect or omitted information. Any actions taken by visitors based on the content of this site are at their own risk.
+                {% endif %}
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Fanhao Diary &copy; {{ current_year }}. {% if lang == 'cn' %}用心看片，隨手筆記。{% else %}Watching with love, writing with joy.{% endif %}</p>
+    </footer>
+
+    <script src="{{ path_ad_js }}"></script>
+    <script src="{{ path_search_js }}"></script>
+    <script src="{{ path_path_resolver_js }}"></script>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && e.target.value.trim() !== '') {
+                    const query = e.target.value.trim();
+                    window.location.href = 'search.html?q=' + encodeURIComponent(query) + '&lang={{ lang }}'; // Search page needs to exist
+                }
+            });
+        }
+    </script>
+</body>
+</html> 

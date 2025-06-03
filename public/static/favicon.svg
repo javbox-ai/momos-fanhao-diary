@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- 圆形背景 -->
+  <circle cx="64" cy="64" r="60" fill="#FF69B4" />
+  
+  <!-- 心形图标 -->
+  <path d="M64 96C64 96 38 76 38 56C38 46 46 38 56 38C61 38 64 40 64 40C64 40 67 38 72 38C82 38 90 46 90 56C90 76 64 96 64 96Z" fill="white" />
+  
+  <!-- MOMO文字 -->
+  <text x="64" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">MOMO</text>
+</svg> 

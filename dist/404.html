@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>找不到頁面 - MOMO Fanhao Diary - 女大生觀影日記 | 女大生觀影日記</title>
+    <meta name="description" content="找不到您要的頁面">
+    
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" href="static/favicon.png" type="image/png">
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 3rem 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .error-title {
+            color: #ff6b9a;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .error-image {
+            max-width: 200px;
+            margin: 2rem auto;
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .back-home {
+            display: inline-block;
+            background-color: #ff6b9a;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .back-home:hover {
+            background-color: #d4417f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <a href="index.html" class="logo-text">MOMO Fanhao Diary</a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="搜尋...">
+        </div>
+        <div class="language-switcher">
+            <a href="en/index.html" class="button lang-switch-btn">
+                Read in English
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="error-container">
+            <h1 class="error-title">404</h1>
+            <div class="error-image">
+                <img src="static/momo-404.png" alt="Sad MOMO" onerror="this.src='static/favicon.png'; this.style.opacity='0.5';">
+            </div>
+            <div class="error-message">
+                <p>哎呀～MOMO 今天偷懶，這頁沒東西唷！</p>
+                <p>可能是我躲進棉被睡過頭，或是這個頁面跑去約會了～</p>
+                <p>要不要回首頁看看有什麼新鮮事？</p>
+            </div>
+            <a href="index.html" class="back-home">返回首頁</a>
+        </div>
+    </div>
+
+    <section class="container disclaimer-section-above-footer card">
+         <h2 class="disclaimer-title">關於本站與免責聲明</h2>
+         <div class="about-site-text">
+            嗨，我是 MOMO，這裡是我的小劇場──Fan號日記♡<br>別把這裡當正經網站，這裡就是我看片時腦補一堆、然後碎念寫給自己看又怕被笑的秘密基地！<br>喜歡 MOMO 的話，記得按個收藏，每天偷看也歡迎，但留言要溫柔一點，不然我會縮進棉被裡躲起來喔（笑）
+         </div>
+         <div class="disclaimer-text">
+            【免責聲明】<br>MOMO的日記完全是自嗨內容，跟現實八竿子打不著～只適合用來放鬆、偷笑、腦補！未成年不准看，不然 MOMO真的會哭！<br>發現怪怪的記得小聲說，我會趕快修正，畢竟這裡是「夢想特區」，要有禮貌才可以一起玩！
+         </div>
+    </section>
+
+    <footer class="site-footer dark-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 MOMO Fanhao Diary - 用心看片，隨手筆記。</p>
+            <p class="footer-disclaimer">本站內容僅供娛樂及評論用途，所有內容均來自網際網路公開資訊。</p>
+            <p class="footer-links">
+                <a href="disclaimer.html">完整免責聲明</a> |
+                <a href="disclaimer.html#privacy">隱私政策</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = e.target.value.trim();
+                if (query) {
+                    window.location.href = 'search.html?q=' + encodeURIComponent(query);
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

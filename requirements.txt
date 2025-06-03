@@ -1,0 +1,8 @@
+# Python dependencies
+# Jinja2
+# requests 
+mysql-connector-python
+openai
+jinja2
+python-dotenv
+requests 

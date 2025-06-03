@@ -1,0 +1,878 @@
+/* === Reset & Base === */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans SC', 'Roboto', 'Segoe UI', 'Poppins', sans-serif;
+    background-color: #FFF8F0; /* 奶油色背景 */
+    color: #333333; /* 深灰色文字 */
+    line-height: 1.7;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px; /* Responsive padding */
+}
+
+a {
+    color: #FF69B4; /* 品牌粉色 */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #e0559b; /* 深一點的粉色 */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* === Header === */
+header {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid #FF69B4; /* 品牌粉色下邊框 */
+}
+
+header .logo-area .logo-text {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #FF69B4;
+}
+
+header .search-bar input[type="search"] {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    min-width: 250px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+header .search-bar input[type="search"]:focus {
+    border-color: #FF69B4;
+    box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
+    outline: none;
+}
+
+/* === Buttons === */
+.button, button {
+    background-color: #FF69B4; /* 品牌粉色 */
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px; /* 更圓潤 */
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.button:hover, button:hover {
+    background-color: #e0559b; /* 深一點 */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.button:active, button:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.button.lang-switch-btn { /* Specific to lang switcher if needed */
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+.button-primary.video-card-readmore { /* 'Continue Reading' button */
+    display: inline-block; /* To fit content */
+    margin-top: 15px;
+    font-size: 0.9em;
+    padding: 8px 18px;
+}
+
+/* === Chips === */
+.chip {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 999px; /* 超大圓角 */
+    font-size: 0.9em;
+    font-weight: 500;
+    margin: 2px 8px 2px 0;
+    background: #f8f0fa;
+    color: #b85c8e;
+    border: 1px solid #f3d6e6;
+    box-shadow: 0 1px 4px rgba(184,92,142,0.06);
+    transition: background 0.25s, box-shadow 0.25s, color 0.2s, transform 0.18s;
+}
+.chip:hover {
+    background: #fbe6f2;
+    color: #e94e77;
+    box-shadow: 0 4px 16px #f8b5d1;
+    transform: translateY(-2px) scale(1.08);
+}
+.chip-fanhao {
+    background: #f3f3f3;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+}
+.chip-actress, .chip-actress-sidebar {
+    background-color: #ffe0f0; /* 非常淺的粉色 */
+    color: #c2185b; /* 深粉色文字 */
+}
+.chip-category, .chip-category-sidebar {
+    background-color: #e6fff2; /* 非常淺的薄荷綠/奶油綠 */
+    color: #00695c; /* 深水鴨綠 */
+}
+/* Sidebar chips might have slightly different margin/padding if needed */
+
+/* === Main Layout (Index Page) === */
+.index-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Increased gap */
+}
+
+.main-content-area {
+    flex: 1; /* Takes up remaining space, or specific flex-basis */
+    min-width: 0; /* Prevents overflow with flex items */
+    /* For a 2-column layout, it might be flex: 2 or 3 depending on sidebar */
+}
+
+.sidebar {
+    flex: 0 0 300px; /* Fixed width sidebar */
+    /* Or flex: 1 for proportional sizing */
+}
+
+.section-title, .widget-title {
+    font-size: 1.8em;
+    color: #d13878; /* Existing pink theme color */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #fce4ec; /* Light pink border */
+    font-weight: 600;
+}
+.widget-title {
+    font-size: 1.4em;
+}
+
+/* Video Card Grid */
+.video-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive 2+ columns */
+    gap: 25px;
+}
+
+/* Single Video Card */
+.video-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+.video-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.video-card-thumbnail-link {
+    position: relative;
+    display: block;
+}
+.video-card-thumbnail-link .video-card-thumbnail {
+    display: block;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+}
+.video-card-thumbnail-link .thumb-mask {
+    display: block;
+}
+.video-card-thumbnail-link.unblur .thumb-mask {
+    background: rgba(255,255,255,0);
+}
+.video-card-thumbnail-link.unblur .video-card-thumbnail {
+    filter: none !important;
+}
+@media (hover: hover) and (pointer: fine) {
+    .video-card-thumbnail-link:hover .video-card-thumbnail {
+        filter: none !important;
+    }
+    .video-card-thumbnail-link:hover .thumb-mask {
+        background: rgba(255,255,255,0) !important;
+    }
+}
+
+.video-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Make body fill space */
+}
+.video-card-title {
+    font-size: 1.4em; /* 大字標題 */
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+.video-card-title a {
+    color: #333333;
+}
+.video-card-title a:hover {
+    color: #FF69B4;
+}
+
+.video-card-chips {
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.video-card-summary {
+    font-size: 0.9em;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allow summary to take available space before button */
+}
+
+/* === Sidebar Widgets === */
+.sidebar .card { /* Sidebar widgets are cards */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+.sidebar .chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.sidebar .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar .nav-list li a {
+    padding: 8px 0;
+    display: block;
+    border-bottom: 1px dashed #f0f0f0;
+    color: #555;
+    font-weight: 500;
+}
+.sidebar .nav-list li a:hover {
+    color: #FF69B4;
+}
+.sidebar .nav-list li:last-child a {
+    border-bottom: none;
+}
+
+/* === Disclaimer Section (Above Footer) === */
+.disclaimer-section-above-footer.card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-top: 3px solid #FF69B4;
+}
+
+.disclaimer-title {
+    color: #d13878;
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #fce4ec;
+}
+
+.about-site-text,
+.disclaimer-text {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.about-site-text {
+    background-color: #fff9fc;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #FF69B4;
+    margin-bottom: 20px;
+}
+
+.disclaimer-text {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #ffb09e;
+}
+
+/* === Footer === */
+.site-footer.dark-footer {
+    background-color: #333333; /* 深灰色背景 */
+    color: #e0e0e0; /* 淺灰色文字，高對比 */
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 0; /* No margin if disclaimer is directly above */
+    border-top: 5px solid #FF69B4; /* 品牌粉頂部邊框 */
+}
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.footer-content p {
+    margin: 10px 0;
+    font-size: 0.95em;
+}
+.footer-links a {
+    color: #FF69B4; /* 品牌粉色連結 */
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 500;
+}
+.footer-links a:hover {
+    color: #ffffff; /* 白色 hover */
+    text-decoration: underline;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 992px) { /* Medium screens */
+    .main-content-area {
+        /* For 2-column grid, this might not need to change yet */
+    }
+    .sidebar {
+        /* flex-basis: 280px; /* Slightly narrower */
+    }
+}
+
+@media (max-width: 768px) { /* Tablets */
+    .index-page-container {
+        flex-direction: column; /* Stack main and sidebar */
+    }
+    .sidebar {
+        flex-basis: auto; /* Full width when stacked */
+        margin-top: 30px;
+    }
+    .video-card-grid {
+        /* grid-template-columns: 1fr; /* Single column for cards */
+        /* Or keep minmax(280px, 1fr) for potential 2 columns if space */
+    }
+    header {
+        padding: 10px 15px;
+        flex-wrap: wrap; /* Allow header items to wrap if needed */
+        justify-content: center; /* Center items on mobile */
+        gap: 10px;
+    }
+    header .search-bar {
+         order: 1; /* Search bar below logo on mobile */
+         width: 100%;
+         margin: 10px 0 0 0;
+    }
+     header .search-bar input[type="search"] {
+        min-width: auto;
+        width: 100%;
+    }
+    header .language-switcher {
+        margin-top: 5px;
+    }
+    .section-title { font-size: 1.6em; }
+}
+
+@media (max-width: 576px) { /* Small phones */
+    .container {
+        padding: 0 10px; /* Less padding on small screens */
+        margin-top: 15px;
+    }
+    .video-card-grid {
+        grid-template-columns: 1fr; /* Force single column */
+    }
+    .video-card-title { font-size: 1.25em; }
+    .chip { font-size: 0.8em; padding: 4px 10px; }
+    .button { padding: 8px 15px; font-size: 0.9em; }
+    .button-primary.video-card-readmore { padding: 7px 15px; }
+    .chip-link, .tag-chip, .actress-chip { font-size: 0.85em; padding: 0.18em 0.8em; }
+
+    .footer-content p { font-size: 0.9em; }
+    .footer-links a { margin: 0 5px; }
+    .pagination-button {
+        min-width: 35px;
+        height: 35px;
+        font-size: 14px;
+        margin: 2px;
+    }
+    
+    .pagination {
+        padding: 5px;
+    }
+}
+
+/* 1. 封面圖片 hover 效果 */
+.cover-art {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: filter 0.2s, box-shadow 0.2s;
+}
+.cover-art:hover {
+  filter: brightness(1.08) drop-shadow(0 0 8px #f8b5d1);
+}
+
+/* 2. 基本資料表格 */
+.info-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+  margin-bottom: 1em;
+}
+.info-table .info-label {
+  font-weight: bold;
+  color: #b85c8e;
+  padding-right: 8px;
+  white-space: nowrap;
+  vertical-align: top;
+}
+.info-table td {
+  padding: 2px 6px;
+  vertical-align: middle;
+}
+
+/* 3. chip 樣式 */
+.chip-link, .tag-chip, .actress-chip {
+  display: inline-block;
+  border-radius: 999px;
+  background: #f8f0fa;
+  color: #b85c8e;
+  padding: 0.2em 1.1em;
+  margin: 2px 8px 2px 0;
+  font-size: 1em;
+  text-decoration: none;
+  transition: background 0.25s, box-shadow 0.25s, color 0.2s, transform 0.18s;
+  box-shadow: 0 1px 4px rgba(184,92,142,0.06);
+  border: 1px solid #f3d6e6;
+}
+.chip-link:hover, .tag-chip:hover, .actress-chip:hover {
+  background: #fbe6f2;
+  color: #e94e77;
+  box-shadow: 0 4px 16px #f8b5d1;
+  transform: translateY(-2px) scale(1.08);
+}
+.tag-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2em 0.5em;
+  row-gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* 4. 收藏按鈕 */
+.favorite-btn {
+  margin-top: 1em;
+  background: #fff0f6;
+  color: #e94e77;
+  border: 1.5px solid #f3d6e6;
+  border-radius: 999px;
+  font-size: 1.1em;
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  box-shadow: 0 1px 6px rgba(233,78,119,0.07);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.favorite-btn:hover {
+  background: #ffe0ef;
+  color: #b85c8e;
+  transform: scale(1.06);
+  box-shadow: 0 2px 12px #f8b5d1;
+}
+.favorite-btn.favorited {
+  background: #fbe6f2;
+  color: #b85c8e;
+  border-color: #e94e77;
+}
+
+/* 5. 區塊標題、emoji */
+.content-section-title.big-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+/* 6. 區塊分隔、背景、內容多行 */
+.review-section, .plot-section {
+  margin-bottom: 1.5em;
+  background: #fff8fc;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(184,92,142,0.04);
+  padding: 1.2em 1.5em;
+}
+.section-divider {
+  border: none;
+  border-top: 2px dashed #f3d6e6;
+  margin: 2em 0 1.5em 0;
+}
+.multiline-text {
+  white-space: pre-line;
+  line-height: 1.8;
+  font-size: 1.08em;
+}
+
+/* 7. footer 區塊 */
+.footer-low {
+  margin-top: 2em;
+  padding: 0.7em 0 0.3em 0;
+  background: #f8f0fa;
+  color: #b85c8e;
+  font-size: 1em;
+  text-align: center;
+  border-top: 2px solid #f3d6e6;
+  box-shadow: 0 -2px 12px rgba(184,92,142,0.06);
+  min-height: 32px;
+}
+
+/* 8. 免責聲明分隔 */
+.disclaimer-section {
+  margin-top: 2em;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(184,92,142,0.04);
+  border-top: 2px solid #f3d6e6;
+  padding: 1.2em 1.5em;
+}
+
+/* 影片縮圖模糊與遮罩 */
+.blur-thumb {
+    filter: blur(10px) grayscale(0.2) brightness(0.85);
+    transition: filter 0.35s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+}
+.thumb-mask {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.55);
+    pointer-events: none;
+    border-radius: 12px;
+    transition: background 0.35s cubic-bezier(0.4,0,0.2,1);
+    z-index: 2;
+}
+.thumb-unblur {
+    filter: none !important;
+}
+
+/* === Featured Section === */
+.featured-section {
+    margin-bottom: 2em;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5em;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.featured-section .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1.2em;
+    color: #d13878;
+    font-size: 1.8em;
+}
+
+/* === Hot Chips Section === */
+.hot-chips-section {
+    margin: 1.5em 0;
+    padding: 1.2em;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.hot-chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8em;
+    margin-bottom: 1em;
+}
+
+.hot-chips-row:last-child {
+    margin-bottom: 0;
+}
+
+.hot-chips-label {
+    font-weight: 600;
+    color: #d13878;
+    white-space: nowrap;
+}
+
+/* === Quick Navigation Section === */
+.quick-nav-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 1.5em 0;
+    padding: 1.2em;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.quick-nav-section .button {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    background: #fff0f6;
+    color: #d13878;
+    border: 1.5px solid #f3d6e6;
+    transition: all 0.3s ease;
+}
+
+.quick-nav-section .button:hover {
+    background: #ffe0ef;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(209,56,120,0.15);
+}
+
+/* === Hot Rank Section === */
+.hot-rank-section {
+    margin: 1.5em 0;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5em;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.hot-rank-section .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1.2em;
+    color: #d13878;
+    font-size: 1.8em;
+}
+
+/* === Enhanced Chip Styles === */
+.chip-link, .tag-chip, .actress-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4em 1.2em;
+    border-radius: 999px;
+    background: #fff0f6;
+    color: #d13878;
+    font-size: 0.95em;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1.5px solid #f3d6e6;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(209,56,120,0.08);
+}
+
+.chip-link:hover, .tag-chip:hover, .actress-chip:hover {
+    background: #ffe0ef;
+    color: #b85c8e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(209,56,120,0.15);
+}
+
+/* === Pagination Styles === */
+.pagination-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 8px;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.pagination-button {
+    min-width: 40px;
+    height: 40px;
+    margin: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #FF69B4;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.pagination-button.active {
+    background-color: #FF69B4;
+    color: white;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+}
+
+.pagination-button:hover:not(.active):not(.disabled) {
+    background-color: #fce4ec;
+    transform: translateY(-2px);
+}
+
+.pagination-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.pagination-first,
+.pagination-last,
+.pagination-prev,
+.pagination-next {
+    font-size: 18px;
+}
+
+.pagination-info {
+    margin-top: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+    .quick-nav-section {
+        flex-direction: column;
+    }
+    
+    .quick-nav-section .button {
+        width: 100%;
+    }
+    
+    .hot-chips-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .hot-chips-label {
+        margin-bottom: 0.5em;
+    }
+}
+
+/* 觀影心得樣式 */
+.review-content {
+    line-height: 1.7;
+    font-size: 1rem;
+    color: #333;
+}
+
+.review-content p {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+.review-tag {
+    color: #ff6b9a;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.review-subtitle {
+    font-weight: bold;
+    font-size: 1.15rem;
+    color: #d4417f;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid #ff6b9a;
+    padding-left: 10px;
+}
+
+/* 英文觀影心得樣式 */
+.review-content.english-review p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* 關於本站與免責聲明區塊美化 */
+.disclaimer-section-above-footer {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.disclaimer-title {
+    color: #ff6b9a;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.about-site-text, .disclaimer-text {
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    padding: 0 1rem;
+}
+
+/* Footer調整 */
+.site-footer {
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+/* 優化RWD */
+@media (max-width: 768px) {
+    .video-card-title {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    
+    .video-card-chips {
+        flex-wrap: wrap;
+    }
+    
+    .chip {
+        margin-bottom: 0.5rem;
+    }
+    
+    .video-header h1 {
+        font-size: 1.3rem;
+        line-height: 1.4;
+    }
+    
+    .video-content {
+        flex-direction: column;
+    }
+    
+    .disclaimer-section-above-footer {
+        padding: 1rem;
+    }
+} 

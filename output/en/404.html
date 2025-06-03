@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Page Not Found | MOMO Fanhao Diary</title>
+    <meta name="description" content="Sorry, the page you're looking for does not exist.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+
+    <meta property="og:title" content="Page Not Found | MOMO Fanhao Diary">
+    <meta property="og:description" content="Sorry, the page you&#39;re looking for does not exist.">
+    <meta property="og:url" content="en/404.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MOMO Fanhao Diary">
+
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/favicon.png" type="image/png">
+    <style>
+        .error-container {
+            text-align: center;
+            margin: 3em auto;
+            padding: 2em;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+        }
+        .error-image {
+            max-width: 250px;
+            margin: 0 auto 2em;
+        }
+        .error-code {
+            font-size: 8em;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1;
+            color: #FF69B4;
+            text-shadow: 2px 2px 0px rgba(255, 105, 180, 0.3);
+        }
+        .error-message {
+            font-size: 1.5em;
+            margin: 1em 0;
+            color: #333;
+        }
+        .error-description {
+            margin-bottom: 2em;
+            color: #666;
+        }
+        .error-links {
+            margin-top: 2em;
+        }
+        .error-links a {
+            margin: 0 0.5em;
+            color: #FF69B4;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <a href="/en/" class="logo-text">MOMO Fanhao Diary</a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="Search...">
+        </div>
+        <div class="language-switcher">
+            <a href="404.html" class="button lang-switch-btn">
+閱讀中文版            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="error-container">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-message">
+                Oops! MOMO is being lazy today!
+            </h2>
+            <p class="error-description">
+                The page you're looking for doesn't exist or has been moved. Please return to the homepage for more exciting content.
+            </p>
+            <div class="error-links">
+                <a href="/en/">
+Back to Home                </a>
+                <a href="/en/categories.html">
+Browse Categories                </a>
+                <a href="/en/actresses.html">
+Browse Actresses                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>MOMO Fanhao Diary &copy; 2025. Watching with love, writing with joy.</p>
+    </footer>
+
+    <script src="../static/ad.js"></script>
+    <script src="../static/search.js"></script>
+    <script src="../static/path-resolver.js"></script>
+    <script>
+        // Basic search redirect
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && e.target.value.trim() !== '') {
+                    const query = e.target.value.trim();
+                    window.location.href = '/search.html?q=' + encodeURIComponent(query) + '&lang=en';
+                }
+            });
+        }
+    </script>
+</body>
+</html> 

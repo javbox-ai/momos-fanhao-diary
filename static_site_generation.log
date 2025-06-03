@@ -1,0 +1,1638 @@
+2025-05-19 12:40:22,268 - INFO - 當前配置: TEST_MODE=False, TEST_LIMIT=30
+2025-05-19 12:40:22,268 - INFO - 開始生成靜態網站...
+2025-05-19 12:40:22,269 - INFO - 清理已存在的輸出目錄: output
+2025-05-19 12:40:24,323 - INFO - 創建輸出目錄: output
+2025-05-19 12:40:24,323 - INFO - 複製靜態資源...
+2025-05-19 12:40:24,404 - INFO - package: mysql.connector.plugins
+2025-05-19 12:40:24,404 - INFO - plugin_name: caching_sha2_password
+2025-05-19 12:40:24,405 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-05-19 12:40:24,405 - INFO - 資料庫連接成功
+2025-05-19 12:40:24,406 - INFO - 開始生成首頁...
+2025-05-19 12:40:24,422 - ERROR - 獲取精選影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 12:40:24,459 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 71, in get_featured_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 12:40:24,460 - ERROR - 獲取熱門排行影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 12:40:24,461 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 91, in get_hot_rank_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 12:40:24,462 - ERROR - 獲取最新影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 12:40:24,463 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 114, in get_latest_videos
+    cursor.execute(query, (limit, offset))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 12:40:24,467 - ERROR - 獲取熱門分類失敗: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+2025-05-19 12:40:24,468 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 135, in get_hot_genres
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+
+2025-05-19 12:40:24,469 - ERROR - 獲取熱門女優失敗: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+2025-05-19 12:40:24,471 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 156, in get_hot_actresses
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+
+2025-05-19 12:40:24,471 - INFO - 生成中文版首頁...
+2025-05-19 12:40:24,472 - ERROR - 生成靜態網站時發生錯誤: 'seo' is undefined
+2025-05-19 12:40:24,474 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 12:40:24,474 - ERROR - 程序執行失敗
+2025-05-19 12:40:24,475 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 248, in <module>
+    generate_static_site()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 13:16:07,722 - INFO - 當前配置: TEST_MODE=False, TEST_LIMIT=30
+2025-05-19 13:16:07,722 - INFO - 開始生成靜態網站...
+2025-05-19 13:16:07,723 - INFO - 清理已存在的輸出目錄: output
+2025-05-19 13:16:07,725 - INFO - 創建輸出目錄: output
+2025-05-19 13:16:07,725 - INFO - 複製靜態資源...
+2025-05-19 13:16:07,811 - INFO - package: mysql.connector.plugins
+2025-05-19 13:16:07,812 - INFO - plugin_name: caching_sha2_password
+2025-05-19 13:16:07,812 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-05-19 13:16:07,812 - INFO - 資料庫連接成功
+2025-05-19 13:16:07,812 - INFO - 開始生成首頁...
+2025-05-19 13:16:07,845 - ERROR - 獲取精選影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:16:07,875 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 71, in get_featured_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:16:07,876 - ERROR - 獲取熱門排行影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:16:07,877 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 91, in get_hot_rank_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:16:07,878 - ERROR - 獲取最新影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:16:07,879 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 114, in get_latest_videos
+    cursor.execute(query, (limit, offset))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:16:07,880 - ERROR - 獲取熱門分類失敗: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+2025-05-19 13:16:07,881 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 135, in get_hot_genres
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+
+2025-05-19 13:16:07,881 - ERROR - 獲取熱門女優失敗: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+2025-05-19 13:16:07,882 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 156, in get_hot_actresses
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+
+2025-05-19 13:16:07,883 - INFO - 生成中文版首頁...
+2025-05-19 13:16:07,884 - ERROR - 生成靜態網站時發生錯誤: 'seo' is undefined
+2025-05-19 13:16:07,894 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 13:16:07,895 - ERROR - 程序執行失敗
+2025-05-19 13:16:07,895 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 248, in <module>
+    generate_static_site()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 13:21:47,714 - INFO - 當前配置: TEST_MODE=False, TEST_LIMIT=30
+2025-05-19 13:21:47,714 - INFO - 開始生成靜態網站...
+2025-05-19 13:21:47,714 - INFO - 清理已存在的輸出目錄: output
+2025-05-19 13:21:47,717 - INFO - 創建輸出目錄: output
+2025-05-19 13:21:47,717 - INFO - 複製靜態資源...
+2025-05-19 13:21:47,800 - INFO - package: mysql.connector.plugins
+2025-05-19 13:21:47,800 - INFO - plugin_name: caching_sha2_password
+2025-05-19 13:21:47,800 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-05-19 13:21:47,801 - INFO - 資料庫連接成功
+2025-05-19 13:21:47,801 - INFO - 開始生成首頁...
+2025-05-19 13:21:47,818 - ERROR - 獲取精選影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:21:47,821 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 71, in get_featured_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:21:47,822 - ERROR - 獲取熱門排行影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:21:47,822 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 91, in get_hot_rank_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:21:47,823 - ERROR - 獲取最新影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:21:47,824 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 114, in get_latest_videos
+    cursor.execute(query, (limit, offset))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:21:47,826 - ERROR - 獲取熱門分類失敗: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+2025-05-19 13:21:47,827 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 135, in get_hot_genres
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+
+2025-05-19 13:21:47,827 - ERROR - 獲取熱門女優失敗: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+2025-05-19 13:21:47,828 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 156, in get_hot_actresses
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+
+2025-05-19 13:21:47,829 - INFO - 生成中文版首頁...
+2025-05-19 13:21:47,830 - ERROR - 生成靜態網站時發生錯誤: 'seo' is undefined
+2025-05-19 13:21:47,831 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 13:21:47,831 - ERROR - 程序執行失敗
+2025-05-19 13:21:47,832 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 248, in <module>
+    generate_static_site()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 13:31:08,314 - INFO - 當前配置: TEST_MODE=False, TEST_LIMIT=30
+2025-05-19 13:31:08,315 - INFO - 開始生成靜態網站...
+2025-05-19 13:31:08,315 - INFO - 清理已存在的輸出目錄: output
+2025-05-19 13:31:08,317 - INFO - 創建輸出目錄: output
+2025-05-19 13:31:08,318 - INFO - 複製靜態資源...
+2025-05-19 13:31:08,395 - INFO - package: mysql.connector.plugins
+2025-05-19 13:31:08,395 - INFO - plugin_name: caching_sha2_password
+2025-05-19 13:31:08,395 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-05-19 13:31:08,396 - INFO - 資料庫連接成功
+2025-05-19 13:31:08,396 - INFO - 開始生成首頁...
+2025-05-19 13:31:08,412 - ERROR - 獲取精選影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:31:08,414 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 71, in get_featured_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:31:08,414 - ERROR - 獲取熱門排行影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:31:08,415 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 91, in get_hot_rank_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:31:08,416 - ERROR - 獲取最新影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:31:08,417 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 114, in get_latest_videos
+    cursor.execute(query, (limit, offset))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:31:08,418 - ERROR - 獲取熱門分類失敗: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+2025-05-19 13:31:08,419 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 135, in get_hot_genres
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+
+2025-05-19 13:31:08,420 - ERROR - 獲取熱門女優失敗: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+2025-05-19 13:31:08,421 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 156, in get_hot_actresses
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+
+2025-05-19 13:31:08,421 - INFO - 生成中文版首頁...
+2025-05-19 13:31:08,422 - ERROR - 生成靜態網站時發生錯誤: 'seo' is undefined
+2025-05-19 13:31:08,423 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 13:31:08,423 - ERROR - 程序執行失敗
+2025-05-19 13:31:08,424 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 248, in <module>
+    generate_static_site()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 13:31:55,131 - INFO - 當前配置: TEST_MODE=False, TEST_LIMIT=30
+2025-05-19 13:31:55,131 - INFO - 開始生成靜態網站...
+2025-05-19 13:31:55,132 - INFO - 清理已存在的輸出目錄: output
+2025-05-19 13:31:55,134 - INFO - 創建輸出目錄: output
+2025-05-19 13:31:55,135 - INFO - 複製靜態資源...
+2025-05-19 13:31:55,224 - INFO - package: mysql.connector.plugins
+2025-05-19 13:31:55,224 - INFO - plugin_name: caching_sha2_password
+2025-05-19 13:31:55,224 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-05-19 13:31:55,225 - INFO - 資料庫連接成功
+2025-05-19 13:31:55,225 - INFO - 開始生成首頁...
+2025-05-19 13:31:55,242 - ERROR - 獲取精選影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:31:55,244 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 71, in get_featured_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:31:55,244 - ERROR - 獲取熱門排行影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:31:55,245 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 91, in get_hot_rank_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:31:55,246 - ERROR - 獲取最新影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 13:31:55,247 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 114, in get_latest_videos
+    cursor.execute(query, (limit, offset))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 13:31:55,249 - ERROR - 獲取熱門分類失敗: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+2025-05-19 13:31:55,250 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 135, in get_hot_genres
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+
+2025-05-19 13:31:55,251 - ERROR - 獲取熱門女優失敗: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+2025-05-19 13:31:55,251 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 156, in get_hot_actresses
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+
+2025-05-19 13:31:55,252 - INFO - 生成中文版首頁...
+2025-05-19 13:31:55,253 - ERROR - 生成靜態網站時發生錯誤: 'seo' is undefined
+2025-05-19 13:31:55,254 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 13:31:55,254 - ERROR - 程序執行失敗
+2025-05-19 13:31:55,255 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 248, in <module>
+    generate_static_site()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 14:16:52,235 - INFO - 當前配置: TEST_MODE=False, TEST_LIMIT=30
+2025-05-19 14:16:52,235 - INFO - 開始生成靜態網站...
+2025-05-19 14:16:52,235 - INFO - 清理已存在的輸出目錄: output
+2025-05-19 14:16:52,238 - INFO - 創建輸出目錄: output
+2025-05-19 14:16:52,238 - INFO - 複製靜態資源...
+2025-05-19 14:16:52,322 - INFO - package: mysql.connector.plugins
+2025-05-19 14:16:52,323 - INFO - plugin_name: caching_sha2_password
+2025-05-19 14:16:52,323 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-05-19 14:16:52,324 - INFO - 資料庫連接成功
+2025-05-19 14:16:52,324 - INFO - 開始生成首頁...
+2025-05-19 14:16:52,340 - ERROR - 獲取精選影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 14:16:52,343 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 71, in get_featured_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 14:16:52,343 - ERROR - 獲取熱門排行影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 14:16:52,344 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 91, in get_hot_rank_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 14:16:52,345 - ERROR - 獲取最新影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 14:16:52,346 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 114, in get_latest_videos
+    cursor.execute(query, (limit, offset))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 14:16:52,350 - ERROR - 獲取熱門分類失敗: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+2025-05-19 14:16:52,351 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 135, in get_hot_genres
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+
+2025-05-19 14:16:52,352 - ERROR - 獲取熱門女優失敗: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+2025-05-19 14:16:52,352 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 156, in get_hot_actresses
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+
+2025-05-19 14:16:52,353 - INFO - 生成中文版首頁...
+2025-05-19 14:16:52,354 - ERROR - 生成靜態網站時發生錯誤: 'seo' is undefined
+2025-05-19 14:16:52,355 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 14:16:52,355 - ERROR - 程序執行失敗
+2025-05-19 14:16:52,356 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 248, in <module>
+    generate_static_site()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 14:17:53,874 - INFO - 當前配置: TEST_MODE=False, TEST_LIMIT=30
+2025-05-19 14:17:53,874 - INFO - 開始生成靜態網站...
+2025-05-19 14:17:53,874 - INFO - 清理已存在的輸出目錄: output
+2025-05-19 14:17:53,877 - INFO - 創建輸出目錄: output
+2025-05-19 14:17:53,877 - INFO - 複製靜態資源...
+2025-05-19 14:17:53,954 - INFO - package: mysql.connector.plugins
+2025-05-19 14:17:53,954 - INFO - plugin_name: caching_sha2_password
+2025-05-19 14:17:53,955 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-05-19 14:17:53,955 - INFO - 資料庫連接成功
+2025-05-19 14:17:53,955 - INFO - 開始生成首頁...
+2025-05-19 14:17:53,972 - ERROR - 獲取精選影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 14:17:53,974 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 71, in get_featured_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 14:17:53,975 - ERROR - 獲取熱門排行影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 14:17:53,976 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 91, in get_hot_rank_videos
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 14:17:53,976 - ERROR - 獲取最新影片失敗: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+2025-05-19 14:17:53,977 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 114, in get_latest_videos
+    cursor.execute(query, (limit, offset))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'a.name_cn' in 'field list'
+
+2025-05-19 14:17:53,979 - ERROR - 獲取熱門分類失敗: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+2025-05-19 14:17:53,979 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 135, in get_hot_genres
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1146 (42S02): Table 'missav_db.video_genres' doesn't exist
+
+2025-05-19 14:17:53,980 - ERROR - 獲取熱門女優失敗: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+2025-05-19 14:17:53,981 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 156, in get_hot_actresses
+    cursor.execute(query, (limit,))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\cursor.py", line 416, in execute
+    self._connection.cmd_query(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._stmt_partition["mappable_stmt"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        read_timeout=self._read_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        write_timeout=self._write_timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\opentelemetry\context_propagation.py", line 97, in wrapper
+    return method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 937, in cmd_query
+    result = self._handle_result(
+        self._send_cmd(
+    ...<6 lines>...
+        write_timeout,
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 742, in handle_cnx_method
+    raise err
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\utils.py", line 738, in handle_cnx_method
+    return cnx_method(cnx, *args, **kwargs)
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\mysql\connector\connection.py", line 703, in _handle_result
+    raise get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1054 (42S22): Unknown column 'v.actress_id' in 'on clause'
+
+2025-05-19 14:17:53,981 - INFO - 生成中文版首頁...
+2025-05-19 14:17:53,982 - ERROR - 生成靜態網站時發生錯誤: 'seo' is undefined
+2025-05-19 14:17:53,983 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+
+2025-05-19 14:17:53,983 - ERROR - 程序執行失敗
+2025-05-19 14:17:53,984 - ERROR - Traceback (most recent call last):
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 248, in <module>
+    generate_static_site()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\AItools\心得網站\momos-fanhao-diary\generate_static_site.py", line 201, in generate_static_site
+    index_cn_html = template.render(
+        lang='cn',
+    ...<5 lines>...
+        current_year=datetime.now().year
+    )
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\index_static.html", line 8, in top-level template code
+    <title>{{ seo.title_cn | default('Fanhao Diary - 我的深夜觀影手記', true) }}</title>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yoyo\AppData\Roaming\Python\Python313\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'seo' is undefined
+

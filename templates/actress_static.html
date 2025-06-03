@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if lang == 'cn' %}
+    <title>{{ seo.title_cn | default(actress.name_display + ' - 所有作品 | MOMO Fanhao Diary | 女大生觀影日記', true) }}</title>
+    <meta name="description" content="{{ seo.meta_description_cn | default('瀏覽女優 ' + actress.name_display + ' 的所有影片作品。發現 ' + actress.name_display + ' 的精彩演出。', true) }}">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    {% else %}
+    <title>{{ seo.title_en | default(actress.name_display + ' - All Works | MOMO Fanhao Diary | College Girl\'s Movie Diary', true) }}</title>
+    <meta name="description" content="{{ seo.meta_description_en | default('Browse all video works of actress ' + actress.name_display + '. Discover amazing performances by ' + actress.name_display + '.', true) }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    {% endif %}
+
+    <meta property="og:title" content="{{ seo.og_title_cn if lang == 'cn' else seo.og_title_en | default(seo.title_cn if lang == 'cn' else seo.title_en, true) }}">
+    <meta property="og:description" content="{{ seo.og_description_cn if lang == 'cn' else seo.og_description_en | default(seo.meta_description_cn if lang == 'cn' else seo.meta_description_en, true) }}">
+    <meta property="og:image" content="{{ actress.profile_image_url | default(path_placeholder_og_actress, true) }}">
+    <meta property="og:url" content="{{ current_page_url }}">
+    <meta property="og:type" content="profile">
+    <meta property="og:profile:first_name" content="{{ actress.name_display }}"> <!-- Simplified, adjust if more detail available -->
+    <meta property="og:site_name" content="MOMO Fanhao Diary">
+
+    <link rel="stylesheet" href="{{ path_css }}">
+    <link rel="icon" href="{{ path_favicon }}" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <a href="{{ '/' if lang == 'cn' else '/en/' }}" class="logo-text">MOMO Fanhao Diary</a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="{{ '搜尋...' if lang == 'cn' else 'Search...' }}">
+        </div>
+        <div class="language-switcher">
+            <a href="{{ alternate_lang_url }}" class="button lang-switch-btn">
+                {% if lang == 'cn' %}Read in English{% else %}閱讀中文版{% endif %}
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb card">
+                <li class="breadcrumb-item"><a href="{{ '/' if lang == 'cn' else '/en/' }}">{{ '首頁' if lang == 'cn' else 'Home' }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    {{ actress.name_display | default(('女優' if lang == 'cn' else 'Actress')) }}
+                </li>
+            </ol>
+        </nav>
+
+        <section class="actress-profile-section card">
+            <div class="actress-profile-header">
+                {% if actress.profile_image_url %}
+                <img src="{{ actress.profile_image_url | default(path_placeholder_avatar, true) }}" alt="{{ actress.name_display }}" class="actress-avatar">
+                {% endif %}
+                <div class="actress-info">
+                    <h1 class="page-main-title actress-name">{{ actress.name_display | default(('女優檔案' if lang == 'cn' else 'Actress Profile')) }}</h1>
+                    {% if actress.bio_display %}
+                        <p class="actress-bio">{{ actress.bio_display }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            {% if actress.popular_tags %}
+            <div class="actress-tags">
+                <h3 class="section-title-small">{% if lang == 'cn' %}熱門標籤{% else %}Popular Tags{% endif %}</h3>
+                <div class="tag-chip-list">
+                    {% for tag in actress.popular_tags %}
+                    <a href="{{ tag.url }}" class="tag-chip chip-link">{{ tag.name_display }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+
+        <section class="video-listing-section">
+            <h2 class="section-title">
+                {% if lang == 'cn' %}
+                    {{ actress.name_display }} 出演的 {{ videos_by_actress | length }} 部影片
+                {% else %}
+                    {{ videos_by_actress | length }} Videos Starring {{ actress.name_display }}
+                {% endif %}
+            </h2>
+            <div class="video-grid actress-grid">
+                {% for video in videos_by_actress %}
+                <div class="video-card">
+                    <a href="{{ video.detail_url }}" class="video-card-thumbnail-link">
+                        <img src="{{ video.cover_thumbnail_url | default(path_placeholder_thumb, true) }}" 
+                             alt="{{ video.title_display }} - {{ '封面' if lang == 'cn' else 'Cover' }}" 
+                             class="video-card-thumbnail blur-thumb">
+                        <span class="thumb-mask"></span>
+                    </a>
+                    <h4 class="video-card-title">
+                         <a href="{{ video.detail_url }}">{{ video.title_display }}</a>
+                    </h4>
+                    <p class="video-card-info">
+                        <span class="info-label-inline">{% if lang == 'cn' %}番號：{% else %}ID:{% endif %}</span> {{ video.fanhao }}
+                    </p>
+                    {% if video.genres_display %}
+                    <p class="video-card-info video-card-genres">
+                        <span class="info-label-inline">{% if lang == 'cn' %}類別：{% else %}Genres:{% endif %}</span>
+                        {% for genre in video.genres_display %}
+                        <a href="{{ genre.url }}" class="chip-link-inline-small">{{ genre.name }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                </div>
+                {% else %}
+                <p class="no-content-message card">
+                    {% if lang == 'cn' %}
+                        這位女優目前還沒有收錄作品喔！去看看<a href="{{ '/' if lang == 'cn' else '/en/' }}">其他女優</a>吧。
+                    {% else %}
+                        No videos found for this actress yet! Check out <a href="{{ '/' if lang == 'cn' else '/en/' }}">other actresses</a>.
+                    {% endif %}
+                </p>
+                {% endfor %}
+            </div>
+            <!-- Add pagination -->
+            {% if total_pages > 1 %}
+            <div class="pagination">
+                {% for p in range(1, total_pages+1) %}
+                    {% if p == current_page %}
+                        <span class="pagination-btn current">{{ p }}</span>
+                    {% else %}
+                        <a href="{{ actress.id_for_file }}_p{{ p }}_{{ lang }}.html" class="pagination-btn">{{ p }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <script>
+                // 页面加载完成后自动滚动到顶部
+                document.addEventListener('DOMContentLoaded', function() {
+                    window.scrollTo(0, 0);
+                });
+            </script>
+            {% endif %}
+        </section>
+        
+        <section class="disclaimer-section card">
+            <h2 class="disclaimer-title">{% if lang == 'cn' %}免責聲明{% else %}Disclaimer{% endif %}</h2>
+            <p class="disclaimer-text">
+                {% if lang == 'cn' %}
+                本網站內容完全來自網際網路，僅供測試交流，並無任何資源儲存於本站。若有內容不慎侵犯您的權益，請聯繫我們並提供相關證明，我們將盡快處理。瀏覽本站內容時，您應自行判斷其合法性、正確性及完整性，若因相關內容引致任何損失，本站恕不負責。
+                {% else %}
+                The content on this website is sourced entirely from the internet for testing and communication purposes only. No resources are stored on this site. If any content inadvertently infringes upon your rights, please contact us with relevant proof, and we will address it promptly. When browsing content on this site, you should independently assess its legality, accuracy, and completeness. This site is not liable for any losses incurred due to such content.
+                {% endif %}
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>MOMO Fanhao Diary &copy; {{ current_year }}. {% if lang == 'cn' %}用心看片，隨手筆記。{% else %}Watching with love, writing with joy.{% endif %}</p>
+    </footer>
+
+    <script src="{{ path_ad_js }}"></script>
+    <script src="{{ path_search_js }}"></script>
+    <script src="{{ path_path_resolver_js }}"></script>
+    <script>
+        // Basic search redirect
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && e.target.value.trim() !== '') {
+                    const query = e.target.value.trim();
+                    window.location.href = '/search.html?q=' + encodeURIComponent(query) + '&lang={{ lang }}';
+                }
+            });
+        }
+
+        // 影片縮圖模糊/遮罩解除，支援桌機 hover、手機點擊
+        function isTouchDevice() {
+            return (('ontouchstart' in window) || (navigator.maxTouchPoints > 0));
+        }
+        function unblurThumb(link) {
+            link.classList.add('unblur');
+            const img = link.querySelector('.video-card-thumbnail');
+            if(img) img.classList.add('thumb-unblur');
+            const mask = link.querySelector('.thumb-mask');
+            if(mask) mask.style.background = 'rgba(255,255,255,0)';
+        }
+        document.querySelectorAll('.video-card-thumbnail-link').forEach(link => {
+            if(isTouchDevice()) {
+                link.addEventListener('touchend', function(e) {
+                    if(!link.classList.contains('unblur')) {
+                        e.preventDefault();
+                        unblurThumb(link);
+                        setTimeout(()=>{ window.location.href = link.href; }, 120);
+                    }
+                }, {passive: false});
+            } else {
+                link.addEventListener('mouseenter', function() { unblurThumb(link); });
+                link.addEventListener('mouseleave', function() {
+                    link.classList.remove('unblur');
+                    const img = link.querySelector('.video-card-thumbnail');
+                    if(img) img.classList.remove('thumb-unblur');
+                    const mask = link.querySelector('.thumb-mask');
+                    if(mask) mask.style.background = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

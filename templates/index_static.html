@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if lang == 'cn' %}
+    <title>{{ seo.title_cn | default('MOMO Fanhao Diary | 女大生觀影日記', true) }}</title>
+    <meta name="description" content="{{ seo.meta_description_cn | default('歡迎來到MOMO Fanhao Diary，一個記錄個人觀影心得、最新影片、熱門分類和女優的小角落。', true) }}">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    {% else %}
+    <title>{{ seo.title_cn | default('MOMO Fanhao Diary | College Girl\'s Movie Diary', true) }}</title>
+    <meta name="description" content="{{ seo.meta_description_en | default('Welcome to MOMO Fanhao Diary, a personal corner for movie reviews, latest videos, popular categories, and actresses.', true) }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    {% endif %}
+
+    <meta property="og:title" content="{{ seo.og_title_cn if lang == 'cn' else seo.og_title_en | default(seo.title_cn if lang == 'cn' else seo.title_en, true) }}">
+    <meta property="og:description" content="{{ seo.og_description_cn if lang == 'cn' else seo.og_description_en | default(seo.meta_description_cn if lang == 'cn' else seo.meta_description_en, true) }}">
+    <meta property="og:image" content="{{ seo.og_image_url | default(path_logo, true) }}">
+    <meta property="og:url" content="{{ current_page_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MOMO Fanhao Diary">
+
+    <link rel="stylesheet" href="{{ path_css }}">
+    <link rel="icon" href="{{ path_favicon }}" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <a href="{{ '/' if lang == 'cn' else '/en/' }}" class="logo-text">MOMO Fanhao Diary</a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="{{ '搜尋...' if lang == 'cn' else 'Search...' }}">
+        </div>
+        <div class="language-switcher">
+            <a href="{{ alternate_lang_url }}" class="button lang-switch-btn">
+                {% if lang == 'cn' %}Read in English{% else %}閱讀中文版{% endif %}
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="page-main-title">
+            {% if lang == 'cn' %}🌙 深夜觀影手記{% else %}✨ My Late Night Watchlist{% endif %}
+        </h1>
+
+        <!-- 快速導航區 -->
+        <section class="quick-nav-section">
+            <a href="{{ nav_all_categories_url }}" class="button">
+                <span class="icon">📑</span>
+                {% if lang == 'cn' %}所有分類{% else %}All Categories{% endif %}
+            </a>
+            <a href="{{ nav_all_actresses_url }}" class="button">
+                <span class="icon">👩</span>
+                {% if lang == 'cn' %}所有女優{% else %}All Actresses{% endif %}
+            </a>
+            <a href="{{ nav_all_series_url }}" class="button">
+                <span class="icon">🎬</span>
+                {% if lang == 'cn' %}所有系列{% else %}All Series{% endif %}
+            </a>
+            <a href="{{ nav_all_labels_url }}" class="button">
+                <span class="icon">🏷️</span>
+                {% if lang == 'cn' %}所有標籤{% else %}All Labels{% endif %}
+            </a>
+        </section>
+
+        <!-- 精選推薦區 -->
+        <section class="featured-section card">
+            <h2 class="section-title">
+                <span class="icon">🌟</span>
+                {% if lang == 'cn' %}精選推薦{% else %}Featured Videos{% endif %}
+            </h2>
+            <div class="video-card-grid">
+                {% for video in featured_videos %}
+                <div class="video-card featured-card">
+                    <a href="{{ video.detail_page_path_cn }}" class="video-card-thumbnail-link">
+                        <img src="{{ video.cover_url }}" class="video-card-thumbnail blur-thumb" alt="{{ video.title_cn }}" loading="lazy">
+                        <span class="thumb-mask"></span>
+                    </a>
+                    <div class="video-card-body">
+                        <div class="video-card-chips">
+                            <span class="chip chip-fanhao">{{ video.code }}</span>
+                            {% for genre in video.genres_cn %}
+                                <a href="{{ genre.url }}" class="chip-link tag-chip">{{ genre.name_cn }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="video-card-title"><a href="{{ video.detail_page_path_cn }}">{{ video.title_cn }}</a></div>
+                        <div class="video-card-chips">
+                            <a href="{{ video.actress_page_path_cn }}" class="chip-link actress-chip">{{ video.actress_name_cn }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 熱門分類和女優 -->
+        <section class="hot-chips-section">
+            <div class="hot-chips-row">
+                <span class="hot-chips-label">🔥 {% if lang == 'cn' %}熱門分類{% else %}Popular Categories{% endif %}</span>
+                {% for genre in hot_genres %}
+                    <a href="{{ genre.page_path_cn }}" class="chip-link tag-chip">{{ genre.name_cn }}</a>
+                {% endfor %}
+            </div>
+            <div class="hot-chips-row">
+                <span class="hot-chips-label">👩 {% if lang == 'cn' %}熱門女優{% else %}Popular Actresses{% endif %}</span>
+                {% for actress in hot_actresses %}
+                    <a href="{{ actress.page_path_cn }}" class="chip-link actress-chip">{{ actress.name_cn }}</a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 熱門排行榜 -->
+        <section class="hot-rank-section card">
+            <h2 class="section-title">
+                <span class="icon">🔥</span>
+                {% if lang == 'cn' %}熱門排行榜{% else %}Hot Ranking{% endif %}
+            </h2>
+            <div class="video-card-grid">
+                {% for video in hot_rank_videos %}
+                <div class="video-card hot-rank-card">
+                    <a href="{{ video.detail_page_path_cn }}" class="video-card-thumbnail-link">
+                        <img src="{{ video.cover_url }}" class="video-card-thumbnail blur-thumb" alt="{{ video.title_cn }}" loading="lazy">
+                        <span class="thumb-mask"></span>
+                    </a>
+                    <div class="video-card-body">
+                        <div class="video-card-chips">
+                            <span class="chip chip-fanhao">{{ video.code }}</span>
+                            {% for genre in video.genres_cn %}
+                                <a href="{{ genre.url }}" class="chip-link tag-chip">{{ genre.name_cn }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="video-card-title"><a href="{{ video.detail_page_path_cn }}">{{ video.title_cn }}</a></div>
+                        <div class="video-card-chips">
+                            <a href="{{ video.actress_page_path_cn }}" class="chip-link actress-chip">{{ video.actress_name_cn }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 最新影片區 -->
+        <section class="latest-videos-section">
+            <h2 class="section-title">
+                <span class="icon">🆕</span>
+                {% if lang == 'cn' %}最新影片{% else %}Latest Videos{% endif %}
+            </h2>
+            <div class="video-card-grid">
+                {% for video in latest_videos %}
+                <div class="video-card">
+                    <a href="{{ video.detail_page_path_cn }}" class="video-card-thumbnail-link show-big-thumb" data-cover="{{ video.cover_url }}">
+                        <img src="{{ video.cover_url }}" class="video-card-thumbnail blur-thumb" alt="{{ video.title_cn }}" loading="lazy">
+                        <span class="thumb-mask"></span>
+                    </a>
+                    <div class="video-card-body">
+                        <div class="video-card-chips">
+                            <span class="chip chip-fanhao">{{ video.code }}</span>
+                            {% for genre in video.genres_cn %}
+                                <a href="{{ genre.url }}" class="chip-link tag-chip">{{ genre.name_cn }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="video-card-title"><a href="{{ video.detail_page_path_cn }}">{{ video.title_cn }}</a></div>
+                        <div class="video-card-chips">
+                            <a href="{{ video.actress_page_path_cn }}" class="chip-link actress-chip">{{ video.actress_name_cn }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="pagination">
+                {% for p in range(1, total_pages+1) %}
+                    {% if p == current_page %}
+                        <span class="pagination-btn current">{{ p }}</span>
+                    {% else %}
+                        <a href="index_p{{ p }}.html" class="pagination-btn">{{ p }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        <div class="side-content-wrapper">
+            <aside class="popular-chips-section card">
+                <h3 class="section-title-small">{% if lang == 'cn' %}熱門分類{% else %}Popular Categories{% endif %}</h3>
+                <div class="tag-chip-list">
+                    {% for category in popular_categories %}
+                    <a href="{{ category.url }}" class="tag-chip chip-link">
+                        {{ category.name_display }}
+                        {% if category.video_count is defined %} ({{ category.video_count }}){% endif %}
+                    </a>
+                    {% else %}
+                    <span>{% if lang == 'cn' %}暫無分類{% else %}No categories yet{% endif %}</span>
+                    {% endfor %}
+                </div>
+            </aside>
+    
+            <aside class="popular-chips-section card">
+                <h3 class="section-title-small">{% if lang == 'cn' %}熱門女優{% else %}Popular Actresses{% endif %}</h3>
+                <div class="tag-chip-list">
+                    {% for actress in popular_actresses %}
+                    <a href="{{ actress.url }}" class="tag-chip chip-link">
+                        {{ actress.name_display }}
+                        {% if actress.video_count is defined %} ({{ actress.video_count }}){% endif %}
+                    </a>
+                    {% else %}
+                    <span>{% if lang == 'cn' %}暫無女優資訊{% else %}No actress info yet{% endif %}</span>
+                    {% endfor %}
+                </div>
+            </aside>
+        </div>
+
+        <nav class="site-navigation-section card">
+            <h3 class="section-title-small">{% if lang == 'cn' %}網站導覽{% else %}Site Navigation{% endif %}</h3>
+            <ul>
+                <li><a href="{{ '/' if lang == 'cn' else '/en/' }}">{% if lang == 'cn' %}首頁{% else %}Home{% endif %}</a></li>
+                <li><a href="{{ '/categories.html' if lang == 'cn' else '/en/categories.html' }}">{% if lang == 'cn' %}所有分類{% else %}All Categories{% endif %}</a></li>
+                <li><a href="{{ '/actresses.html' if lang == 'cn' else '/en/actresses.html' }}">{% if lang == 'cn' %}所有女優{% else %}All Actresses{% endif %}</a></li>
+                <li><a href="{{ '/disclaimer.html' if lang == 'cn' else '/en/disclaimer.html' }}">{% if lang == 'cn' %}關於本站與免責聲明{% else %}About & Disclaimer{% endif %}</a></li>
+                 <!-- Add other links as needed -->
+            </ul>
+        </nav>
+        
+        <section class="disclaimer-section card">
+            <h2 class="disclaimer-title">{% if lang == 'cn' %}免責聲明{% else %}Disclaimer{% endif %}</h2>
+            <p class="disclaimer-text">
+                {% if lang == 'cn' %}
+                本網站內容完全來自網際網路，僅供測試交流，並無任何資源儲存於本站。若有內容不慎侵犯您的權益，請聯繫我們並提供相關證明，我們將盡快處理。瀏覽本站內容時，您應自行判斷其合法性、正確性及完整性，若因相關內容引致任何損失，本站恕不負責。
+                {% else %}
+                The content on this website is sourced entirely from the internet for testing and communication purposes only. No resources are stored on this site. If any content inadvertently infringes upon your rights, please contact us with relevant proof, and we will address it promptly. When browsing content on this site, you should independently assess its legality, accuracy, and completeness. This site is not liable for any losses incurred due to such content.
+                {% endif %}
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>MOMO Fanhao Diary &copy; {{ current_year }}. {% if lang == 'cn' %}用心看片，隨手筆記。{% else %}Watching with love, writing with joy.{% endif %}</p>
+    </footer>
+
+    <script src="{{ path_ad_js }}"></script>
+    <script src="{{ path_search_js }}"></script>
+    <script src="{{ path_path_resolver_js }}"></script>
+    <script>
+        // Basic search redirect (similar to detail page)
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && e.target.value.trim() !== '') {
+                    const query = e.target.value.trim();
+                    window.location.href = '/search.html?q=' + encodeURIComponent(query) + '&lang={{ lang }}';
+                }
+            });
+        }
+        // 首頁影片卡片縮圖預設模糊，點擊顯示大圖
+        function showBigThumb(e) {
+            e.preventDefault();
+            const img = this.querySelector('img');
+            if (img.classList.contains('blur-thumb')) {
+                img.classList.remove('blur-thumb');
+                img.style.filter = 'none';
+                setTimeout(() => {
+                    window.location.href = this.href;
+                }, 120);
+            } else {
+                window.location.href = this.href;
+            }
+        }
+        // 影片縮圖模糊/遮罩解除，支援桌機 hover、手機點擊
+        function isTouchDevice() {
+            return (('ontouchstart' in window) || (navigator.maxTouchPoints > 0));
+        }
+        function unblurThumb(link) {
+            link.classList.add('unblur');
+            const img = link.querySelector('.video-card-thumbnail');
+            if(img) img.classList.add('thumb-unblur');
+            const mask = link.querySelector('.thumb-mask');
+            if(mask) mask.style.background = 'rgba(255,255,255,0)';
+        }
+        document.querySelectorAll('.video-card-thumbnail-link').forEach(link => {
+            if(isTouchDevice()) {
+                link.addEventListener('touchend', function(e) {
+                    if(!link.classList.contains('unblur')) {
+                        e.preventDefault();
+                        unblurThumb(link);
+                        setTimeout(()=>{ window.location.href = link.href; }, 120);
+                    }
+                }, {passive: false});
+            } else {
+                link.addEventListener('mouseenter', function() { unblurThumb(link); });
+                link.addEventListener('mouseleave', function() {
+                    link.classList.remove('unblur');
+                    const img = link.querySelector('.video-card-thumbnail');
+                    if(img) img.classList.remove('thumb-unblur');
+                    const mask = link.querySelector('.thumb-mask');
+                    if(mask) mask.style.background = '';
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

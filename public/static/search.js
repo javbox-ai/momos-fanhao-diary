@@ -1,0 +1,1 @@
+// search.js - Search and favorite/collection scripts 
