@@ -780,4 +780,130 @@ footer, .footer-low {
     .hot-chips-label {
         margin-bottom: 0.5em;
     }
+}
+
+/* 金句高亮区块样式 */
+.highlight-quote {
+    background-color: rgba(255, 193, 7, 0.15);
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.highlight-quote blockquote {
+    margin: 0;
+    font-size: 1.2em;
+    line-height: 1.5;
+    font-style: italic;
+    color: #333;
+    padding-left: 24px;
+}
+
+.quote-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 1.5em;
+    color: #ffc107;
+}
+
+.quote-text {
+    font-weight: 500;
+}
+
+/* 短评墙样式 */
+.quote-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.quote-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.quote-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 5em;
+    color: rgba(0,0,0,0.05);
+    font-family: serif;
+}
+
+.quote-text-preview {
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #333;
+}
+
+.quote-source {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quote-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.quote-video-info {
+    flex: 1;
+}
+
+.quote-video-title {
+    font-size: 0.9em;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.quote-video-code {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.quote-card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .quote-wall {
+        grid-template-columns: 1fr;
+    }
+    
+    .highlight-quote blockquote {
+        font-size: 1.1em;
+    }
 } 

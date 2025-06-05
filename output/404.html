@@ -61,13 +61,13 @@
 <body>
     <header>
         <div class="logo-area">
-            <a href="index.html" class="logo-text">MOMO Fanhao Diary</a>
+            <a href="/" class="logo-text">MOMO Fanhao Diary</a>
         </div>
         <div class="search-bar">
             <input type="search" id="searchInput" placeholder="搜尋...">
         </div>
         <div class="language-switcher">
-            <a href="en/404.html" class="button lang-switch-btn">
+            <a href="404.html" class="button lang-switch-btn">
 Read in English            </a>
         </div>
     </header>
@@ -82,11 +82,11 @@ Read in English            </a>
                 您要找的頁面不存在或已被移除。請返回首頁，尋找更多精彩內容。
             </p>
             <div class="error-links">
-                <a href="index.html">
+                <a href="/">
 返回首頁                </a>
-                <a href="genres_overview_cn.html">
+                <a href="/categories.html">
 瀏覽分類                </a>
-                <a href="actresses_overview_cn.html">
+                <a href="/actresses.html">
 瀏覽女優                </a>
             </div>
         </div>
@@ -106,7 +106,7 @@ Read in English            </a>
             searchInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter' && e.target.value.trim() !== '') {
                     const query = e.target.value.trim();
-                    window.location.href = 'search.html?q=' + encodeURIComponent(query) + '&lang=cn';
+                    window.location.href = '/search.html?q=' + encodeURIComponent(query) + '&lang=cn';
                 }
             });
         }

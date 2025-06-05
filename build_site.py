@@ -8,6 +8,7 @@ import logging
 import re
 import mysql.connector # Added for MySQL
 from dotenv import load_dotenv # Added for .env
+import random
 
 # --- 基本設定 ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -366,6 +367,9 @@ def generate_index_pages():
     # 熱門排行榜（先隨機）
     hot_rank_videos = random.sample(all_videos, min(HOT_RANK_COUNT, total_videos)) if total_videos >= HOT_RANK_COUNT else all_videos[:HOT_RANK_COUNT]
 
+    # 生成金句墙数据
+    best_quotes = extract_quotes_from_reviews(all_videos, limit=12)
+
     # 分頁產生
     for page in range(1, total_pages+1):
         start_idx = (page-1)*VIDEOS_PER_PAGE
@@ -379,6 +383,7 @@ def generate_index_pages():
             "hot_actresses": hot_actresses,
             "hot_rank_videos": hot_rank_videos,
             "latest_videos": videos_for_page,
+            "best_quotes": best_quotes,  # 添加金句墙数据
             "current_page": page,
             "total_pages": total_pages,
             "page_urls": page_urls,
@@ -1530,6 +1535,138 @@ def copy_static_files():
     
     logging.info("Static files copied successfully.")
 
+def extract_quotes_from_reviews(video_data, limit=10):
+    """从所有评论中提取最佳金句，用于金句墙展示"""
+    quotes = []
+    
+    for video in video_data:
+        if 'ai_review_cn' in video and video['ai_review_cn']:
+            # 使用正则表达式提取句子
+            sentences = re.split(r'[。！？\.!?]', video['ai_review_cn'])
+            sentences = [s.strip() for s in sentences if 10 < len(s.strip()) < 80]  # 过滤太短或太长的句子
+            
+            if sentences:
+                # 优先选择带有强调符号的句子
+                emphasis_sentences = [s for s in sentences if '！' in s or '?' in s or '！' in s or '?' in s]
+                
+                # 如果有强调句子，从中选择，否则从所有句子中选择
+                sentence = random.choice(emphasis_sentences) if emphasis_sentences else random.choice(sentences)
+                
+                quotes.append({
+                    'text': sentence,
+                    'video_code': video['code'],
+                    'video_title': video.get('title', ''),
+                    'thumbnail_url': video.get('cover_url', '')
+                })
+    
+    # 随机打乱并限制数量
+    random.shuffle(quotes)
+    return quotes[:limit]
+
+def generate_category_quotes(videos_by_category, categories, limit_per_category=5):
+    """为每个分类生成金句墙数据"""
+    category_quotes = {}
+    
+    for category_id, videos in videos_by_category.items():
+        category_quotes[category_id] = extract_quotes_from_reviews(videos, limit_per_category)
+    
+    return category_quotes
+
+def generate_category_pages():
+    """生成分类页面"""
+    logging.info("Generating category pages...")
+    
+    # 获取所有视频数据
+    all_videos = load_all_video_data(limit=TEST_LIMIT)
+    
+    # 根据分类ID组织视频
+    categories = {}  # 分类信息
+    videos_by_category = {}  # 分类内的视频
+    
+    # 从视频数据中提取分类信息
+    for video in all_videos:
+        if 'genres' in video and video['genres']:
+            genre_list = video['genres'].split(',')
+            for genre in genre_list:
+                genre = genre.strip()
+                if not genre:
+                    continue
+                
+                # 如果是新分类，添加到字典中
+                if genre not in categories:
+                    categories[genre] = {
+                        'id': genre,
+                        'name_display': genre,
+                        'description_display': ''
+                    }
+                
+                # 添加视频到分类
+                if genre not in videos_by_category:
+                    videos_by_category[genre] = []
+                videos_by_category[genre].append(video)
+    
+    # 生成分类页面的金句墙数据
+    category_quotes = generate_category_quotes(videos_by_category, categories, limit_per_category=6)
+    
+    # 生成每个分类的页面
+    for category_id, category_info in categories.items():
+        videos = videos_by_category.get(category_id, [])
+        
+        # 为每个视频准备详情页URL
+        for video in videos:
+            video['detail_url'] = f"/videos/{video['code']}.html"
+            # 添加女优URL
+            if 'actresses' in video and video['actresses']:
+                actress = video['actresses'].split(',')[0].strip()
+                video['actress_url'] = f"/actresses/{actress}.html"
+                video['actress_name_display'] = actress
+            else:
+                video['actress_url'] = "#"
+                video['actress_name_display'] = "Unknown"
+            
+            # 标题处理
+            video['title_display'] = video.get('ai_rewritten_title_zh', video.get('title', 'Untitled'))
+        
+        context = {
+            "lang": "cn",
+            "base_url": "/",  # 根目录
+            "category": category_info,
+            "videos_in_category": videos,
+            "category_quotes": category_quotes.get(category_id, []),  # 添加当前分类的金句墙数据
+            "path_css": "/static/style.css",
+            "path_placeholder_thumb": "/static/images/placeholder_cover_clear.png"
+        }
+        
+        category_path = f"categories/{category_id}.html"
+        write_html(Path(category_path), "category_static.html", context)
+        logging.info(f"Generated category page: {category_path}")
+    
+    # 生成分类总览页
+    category_items = []
+    for category_id, info in categories.items():
+        category_items.append({
+            'id': category_id,
+            'name_display': info['name_display'],
+            'description_display': info.get('description_display', ''),
+            'url': f"/categories/{category_id}.html",
+            'video_count': len(videos_by_category.get(category_id, []))
+        })
+    
+    # 按视频数量排序
+    category_items.sort(key=lambda x: x['video_count'], reverse=True)
+    
+    context_overview = {
+        "lang": "cn",
+        "base_url": "/",
+        "title": "所有分类",
+        "items": category_items,
+        "item_type": "category",
+        "path_css": "/static/style.css"
+    }
+    
+    write_html(Path("categories.html"), "overview_static.html", context_overview)
+    logging.info("Generated category overview page: categories.html")
+
 # --- 主執行流程 ---
 def main():
     logging.info("開始生成靜態網站 (使用資料庫數據)...")
@@ -1573,6 +1710,7 @@ def main():
     generate_404_pages()
     generate_lang_redirect()
     copy_static_files()
+    generate_category_pages()
 
     logging.info("網站生成完畢！所有檔案位於 output/ 目錄下。")
 

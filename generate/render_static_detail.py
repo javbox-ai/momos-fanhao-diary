@@ -6,6 +6,7 @@ from openai import OpenAI # For DeepSeek
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, timedelta, timezone
 import re
+import random
 
 # --- Configuration & Setup ---
 # Load environment variables from .env file
@@ -365,58 +366,59 @@ def main():
             else: seo_summary_en = re.sub(r'\s*\(\d+\s*chars\)$', '', seo_summary_en).strip()
 
             # 生成中文心得
-            review_prompt_zh = f"""你是一位 20 出頭的女大學生，平常會偷偷看片，並寫下觀影筆記當作深夜小日記。
-請幫我撰寫一篇 番號為「{video_code}」的心得筆記，風格要口語、生動、微色色，適合投稿到部落格或心得網站。
-請模仿真實人類的語氣，並依以下段落撰寫：
-觀影動機開場：用女大生視角，簡單講為什麼會點進這部（像是在考前偷滑手機、朋友推薦之類）
-觀賞過程描寫：選擇最印象深刻的一幕，用描述角色、對白、畫面、高潮等細節方式，語氣可以興奮、害羞或瘋狂。
-結尾總結 & 私密感想：可愛地碎念或反思（例如：這男優太壞了、我以後可能會愛上這類型等等）
+            review_prompt_zh = f"""你是一位 20 出頭的女大學生MOMO，平常會偷偷看片，並寫下觀影筆記當作深夜小日記。
+請幫我撰寫一篇 番號為「{video_code}」的心得筆記，風格要口語、生動、輕鬆、幽默、有少女心，總字數必須控制在400字以內，適合投稿到部落格或心得網站。
+請嚴格按照以下四個段落結構撰寫，每段都要有emoji開頭和明顯小標題：
+
+1. 【三行短評】：用emoji開頭，三句話簡潔點評，語氣要活潑俏皮
+2. 【今天最愛】：用emoji開頭，描述最喜歡的一個場景或情節，語氣要興奮或害羞
+3. 【女大生吐槽】：用emoji開頭，從女生角度吐槽劇情或演員表現的有趣地方
+4. 【本片結論】：用emoji開頭，總結感受並給出評分或推薦度
+
 注意事項：
-使用親暱、口語、非正式語氣（像寫給閨蜜看的那種）
-請控制在 400～600字左右，以利 SEO 收錄與用戶閱讀
-可適度加入貼標籤語（如：#制服控 #主觀視角 #潮吹 #想再看一遍）
-避免過度重複 AI 用詞，務必有段落、句式變化
-影片標題：'{ai_rewritten_title_zh}'，女優：'{actress_name}'，類型：{keywords}。原始簡介：'{base_description}'"""
+- 使用親暱、口語、非正式語氣（像寫給閨蜜看的那種）
+- 嚴格控制在400字以內
+- 適度加入貼標籤語（如：#制服控 #主觀視角 #潮吹 #想再看一遍）放在結尾
+- 避免過度重複 AI 用詞，務必有段落、句式變化
+- 影片標題：'{ai_rewritten_title_zh}'，女優：'{actress_name}'，類型：{keywords}。原始簡介：'{base_description}'
+- 從心得中選出一句最精彩、最有爆點的金句，將在網站上作為「今日金句」高亮顯示"""
             print("Generating review (Chinese - College Girl Style)...")
             ai_content_zh = generate_content_with_deepseek(review_prompt_zh, video_code, "Chinese Review")
-            if "failed" in ai_content_zh.lower() or not ai_content_zh:
-                print("AI review generation failed (Chinese), using placeholder.")
-                ai_content_zh = f"<p>AI 心得生成失敗 ({video_code})</p>"
-
-            # 生成英文心得
-            review_prompt_en = f"""You are a slightly horny, cheeky college girl who writes casual movie notes as late-night diary entries.
-Please help me write a review-style note for the JAV movie with code {video_code}.
-The tone should be playful, immersive, flirty, and ultra-conversational — like a tweet-thread meets Tumblr fangirl blog.
-Structure your writing into these three short but juicy sections:
-Why I clicked it – casual intro (like: "I was bored, scrolling, and BAM—this thumbnail hit me" or "a friend dared me to watch this")
-What made me lose my mind – describe 1–2 moments from the scene in emotional/visual detail (moans, positions, how it felt to watch)
-Afterthoughts – your emotional state after finishing (ex: "I need a shower," "lowkey bookmarked it," "might watch it again tbh")
-Stylistic notes:
-Use TikTok-style expressions, emoji, asides (italic comments), and lots of ellipses / line breaks
-Aim for 400–600 words, naturally spaced with paragraphs
-Avoid AI-sounding vocabulary (make it sound real, slightly chaotic, like horny texting)
-You can include hashtags like #Creampie #POV #LateNightRewatch etc.
-Video Title: '{ai_translated_title_en}', Actress: '{actress_name_en}', Genres: {keywords_en}. Original Description: '{base_description}'"""
-            print("Generating review (English - Horny College Girl Style)...")
-            ai_content_en = generate_content_with_deepseek(review_prompt_en, video_code, "English Review")
-            if "failed" in ai_content_en.lower() or not ai_content_en:
-                print("AI review generation failed (English), using placeholder.")
-                ai_content_en = f"<p>AI review generation failed ({video_code})</p>"
             
-            # --- Prepare data for template rendering ---
-            # The user's render_data needs to be adapted to fit detail_static.html
-            # The template expects: video.fanhao, video.actress_cn, video.ai_title_cn, video.ai_review_cn, etc.
-            # And seo.meta_description_cn
+            # 提取金句
+            highlight_quote = extract_highlight_quote(ai_content_zh)
+            
+            # 添加到模板上下文
+            template_context = {
+                "base_url": BASE_URL,
+                "lang": "cn",
+                "video": video_data,
+                "ai_title": ai_rewritten_title_zh,
+                "ai_review": ai_content_zh,
+                "highlight_quote": highlight_quote,  # 添加金句
+                "alternate_lang_url": f"{BASE_URL}/en/videos/{video_code}.html",
+                "related_videos": [],
+                "path_css": "/static/style.css",
+                "path_favicon": "/static/favicon.ico",
+                "path_detail_toggle_js": "/js/detail-toggle.js",
+                "chips_data": {
+                    "genres": [],
+                    "actresses": []
+                },
+                "site_description": "",
+                "current_year": current_year
+            }
 
             # Update video_data with generated AI content for the template
             video_data['fanhao'] = video_code # Redundant as video_data['id'] is already fanhao, but explicit for template
             video_data['actress_cn'] = actress_name
             video_data['actress_en'] = actress_name_en # Use the (potentially placeholder) English actress name
             
+            # 使用正確的變量名稱
             video_data['ai_title_cn'] = ai_rewritten_title_zh
             video_data['ai_title_en'] = ai_translated_title_en
             video_data['ai_review_cn'] = ai_content_zh
-            video_data['ai_review_en'] = ai_content_en
+            video_data['ai_review_en'] = ai_content_zh
             
             # For plot summary, use original description
             video_data['plot_summary_cn'] = base_description 
@@ -447,8 +449,14 @@ Video Title: '{ai_translated_title_en}', Actress: '{actress_name_en}', Genres: {
             video_data['tags_for_template'] = series_tags_cn + labels_tags_cn
 
 
-            seo_context_for_template_zh = {'meta_description_cn': seo_summary_zh}
-            seo_context_for_template_en = {'meta_description_en': seo_summary_en}
+            seo_context_for_template_zh = {
+                'meta_description_cn': seo_summary_zh,
+                'title_cn': ai_rewritten_title_zh
+            }
+            seo_context_for_template_en = {
+                'meta_description_en': seo_summary_en,
+                'title_en': ai_translated_title_en
+            }
             
             static_paths_dict = get_static_paths(BASE_URL)
 
@@ -483,7 +491,7 @@ Video Title: '{ai_translated_title_en}', Actress: '{actress_name_en}', Genres: {
             # Ensure EN fields are used for main display if different from CN in video_data
             page_context_en['video']['actress_name_display'] = actress_name_en # For {{ video.actress_name_display }}
             page_context_en['video']['title_display'] = ai_translated_title_en # For {{ video.title_display }}
-            page_context_en['video']['review_display'] = ai_content_en # For {{ video.review_display }}
+            page_context_en['video']['review_display'] = ai_content_zh # For {{ video.review_display }}
 
 
             # --- Template Rendering (adapted from original) ---
@@ -523,6 +531,26 @@ Video Title: '{ai_translated_title_en}', Actress: '{actress_name_en}', Genres: {
          logging.info(f"Check {OUTPUT_DIR_BASE} for generated HTML files. Log file: {LOG_FILE}")
     else:
          logging.info(f"No videos were processed with new loop. Check logs. Log file: {LOG_FILE}")
+
+def extract_highlight_quote(ai_review):
+    """从心得中提取一句最精彩的金句"""
+    if not ai_review:
+        return None
+    
+    # 尝试从心得文本中提取带有情感和特色的句子作为金句
+    sentences = re.split(r'[。！？\.!?]', ai_review)
+    sentences = [s.strip() for s in sentences if 10 < len(s.strip()) < 50]  # 过滤太短或太长的句子
+    
+    if not sentences:
+        return None
+    
+    # 优先选择有感叹号或问号的句子，因为这些句子通常更有情感
+    emphasis_sentences = [s for s in sentences if '！' in s or '?' in s or '！' in s or '?' in s]
+    if emphasis_sentences:
+        return random.choice(emphasis_sentences)
+    
+    # 如果没有带强调的句子，随机选择一句适当长度的句子
+    return random.choice(sentences)
 
 if __name__ == '__main__':
     placeholder_images_dir = os.path.join(PROJECT_ROOT, 'public', 'static', 'images')

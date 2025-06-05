@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if lang == 'cn' %}
+    <title>{{ seo.title_cn | default(video.code + ' - ' + video.title_cn + ' | MOMO Fanhao Diary | 女大生觀影日記', true) }}</title>
+    <meta name="description" content="{{ seo.meta_description_cn | default(video.code + ' ' + video.actress_name_cn + ' ' + video.title_cn + ' ' + video.summary_cn, true) }}">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale:alternate" content="en_US">
+    {% else %}
+    <title>{{ seo.title_en | default(video.code + ' - ' + video.title_en + ' | MOMO Fanhao Diary | College Girl\'s Movie Diary', true) }}</title>
+    <meta name="description" content="{{ seo.meta_description_en | default(video.code + ' ' + video.actress_name_en + ' ' + video.title_en + ' ' + video.summary_en, true) }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="zh_CN">
+    {% endif %}
+
+    <meta property="og:title" content="{{ (video.title_cn if lang == 'cn' else video.title_en) | default(video.code) }}">
+    <meta property="og:description" content="{{ seo.meta_description_cn if lang == 'cn' else seo.meta_description_en }}">
+    <meta property="og:image" content="{{ video.cover_image_url_clear | default(path_placeholder_og_video, true) }}">
+    <meta property="og:url" content="{{ current_page_url }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="MOMO Fanhao Diary">
+
+    <link rel="stylesheet" href="{{ path_css }}">
+    <link rel="icon" href="{{ path_favicon }}" type="image/png">
+
+    <!-- All styles should be in the external CSS file linked above ({{ path_css }}) -->
+    <!-- The <style> block previously here has been removed. -->
+
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <a href="{{ '/' if lang == 'cn' else '/en/' }}" class="logo-text">MOMO Fanhao Diary</a>
+        </div>
+        <div class="search-bar">
+            <input type="search" id="searchInput" placeholder="{{ '搜尋...' if lang == 'cn' else 'Search...' }}">
+        </div>
+        <div class="language-switcher">
+            <a href="{{ alternate_lang_url }}" class="button lang-switch-btn">
+                {% if lang == 'cn' %}Read in English{% else %}閱讀中文版{% endif %}
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb card">
+                <li class="breadcrumb-item"><a href="{{ nav_home_url | default(('../index_cn.html' if lang == 'cn' else '../index_en.html')) }}">{{ '首頁' if lang == 'cn' else 'Home' }}</a></li>
+                {% if video.primary_genre_id %}
+                <li class="breadcrumb-item">
+                    <a href="{{ (video.primary_genre_page_path_cn if lang == 'cn' else video.primary_genre_page_path_en).as_posix() }}">
+                        {{ video.primary_genre_name_cn if lang == 'cn' else video.primary_genre_name_en }}
+                    </a>
+                </li>
+                {% endif %}
+                <li class="breadcrumb-item active" aria-current="page">{{ video.code }}</li>
+            </ol>
+        </nav>
+
+        <h1 class="video-main-title">
+            {{ video.code }} - {{ video.title_display | default(('未提供標題' if lang == 'cn' else 'Title not available')) }}
+        </h1>
+
+        <section class="cover-info-section">
+            <div class="cover-image-container">
+                <img id="coverImage" 
+                     src="{{ video.cover_image_url_blurred | default(path_placeholder_thumb, true) }}"
+                     alt="{{ video.title_display }} - {{ '封面' if lang == 'cn' else 'Cover' }}"
+                     title="{{ '點擊切換清晰/模糊' if lang == 'cn' else 'Click to toggle blur/clear' }}"
+                     class="cover-art">
+            </div>
+            <aside class="video-info-card">
+                <h3>{{ '基本情報' if lang == 'cn' else 'Basic Info' }}</h3>
+                <table class="info-table">
+                  <tr><td class="info-label">{{ '番號 (ID):' if lang == 'cn' else 'Code:' }}</td><td>{{ video.code }}</td></tr>
+                  <tr><td class="info-label">{{ '女優 (Actress):' if lang == 'cn' else 'Actress:' }}</td>
+                    <td>
+                      {% for actress in video.actresses_cn %}
+                        <a href="{{ actress.page_path_cn if lang == 'cn' else actress.page_path_en }}" class="chip-link actress-chip">{{ actress.name_cn if lang == 'cn' else actress.name_en }}</a>
+                      {% endfor %}
+                    </td>
+                  </tr>
+                  <tr><td class="info-label">{{ '發行日 (Release Date):' if lang == 'cn' else 'Release Date:' }}</td><td>{{ video.release_date | default('N/A') }}</td></tr>
+                  {% if video.genres_for_template %}
+                  <tr><td class="info-label">{{ '類別 (Genres):' if lang == 'cn' else 'Genres:' }}</td>
+                    <td>
+                      <div class="tag-chip-list">
+                        {% for genre in video.genres_for_template %}
+                          <a href="{{ genre.url }}" class="tag-chip chip-link">{{ genre.name_cn if lang == 'cn' else genre.name_en }}</a>
+                        {% endfor %}
+                      </div>
+                    </td>
+                  </tr>
+                  {% endif %}
+                </table>
+                <button id="favoriteBtn" class="button favorite-btn" data-fanhao="{{ video.code }}">
+                    <span id="favIcon">💗</span> <span id="favText">{% if lang == 'cn' %}加入收藏{% else %}Add to Favorites{% endif %}</span>
+                </button>
+            </aside>
+        </section>
+
+        <section class="content-section card review-section">
+            <h2 class="content-section-title big-title">
+                {% if lang == 'cn' %}📝 小日記：觀影心情{% else %}📝 My Movie Diary: Feelings & Thoughts{% endif %}
+            </h2>
+            <div class="content-text multiline-text">
+                {{ video.review_display | safe if video.review_display else ('<p>心得還在路上哦...</p>' if lang == 'cn' else '<p>Review coming soon...</p>') }}
+            </div>
+        </section>
+        <hr class="section-divider">
+        <section class="content-section card plot-section">
+            <h2 class="content-section-title big-title">{{ '劇情速覽' if lang == 'cn' else 'Plot Quick Look' }}</h2>
+            <div class="content-text multiline-text">
+                {{ video.plot_summary_cn if lang == 'cn' else video.plot_summary_en | safe if (video.plot_summary_cn if lang == 'cn' else video.plot_summary_en) else ('<p>劇情概要還在路上...</p>' if lang == 'cn' else '<p>Plot summary coming soon...</p>') }}
+            </div>
+        </section>
+
+        <section class="disclaimer-section card">
+            <h2 class="disclaimer-title">{% if lang == 'cn' %}免責聲明{% else %}Disclaimer{% endif %}</h2>
+            <p class="disclaimer-text">
+                {% if lang == 'cn' %}
+                本網站內容完全來自網際網路，僅供測試交流，並無任何資源儲存於本站。若有內容不慎侵犯您的權益，請聯繫我們並提供相關證明，我們將盡快處理。瀏覽本站內容時，您應自行判斷其合法性、正確性及完整性，若因相關內容引致任何損失，本站恕不負責。
+                {% else %}
+                The content on this website is sourced entirely from the internet for testing and communication purposes only. No resources are stored on this site. If any content inadvertently infringes upon your rights, please contact us with relevant proof, and we will address it promptly. When browsing content on this site, you should independently assess its legality, accuracy, and completeness. This site is not liable for any losses incurred due to such content.
+                {% endif %}
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer-low">
+        <p>MOMO Fanhao Diary &copy; {{ current_year }}. {% if lang == 'cn' %}用心看片，隨手筆記。{% else %}Watching with love, writing with joy.{% endif %}</p>
+    </footer>
+
+    <script src="{{ path_ad_js }}"></script>
+    <script src="{{ path_search_js }}"></script>
+    <script src="{{ path_path_resolver_js }}"></script>
+    <script>
+        // 封面切換模糊/清晰
+        const coverImage = document.getElementById('coverImage');
+        if (coverImage) {
+            let isClear = false;
+            const clearSrc = "{{ video.cover_image_url_clear | default(path_placeholder_thumb, true) }}";
+            const blurredSrc = "{{ video.cover_image_url_blurred | default(path_placeholder_thumb, true) }}";
+            coverImage.addEventListener('click', () => {
+                coverImage.src = isClear ? blurredSrc : clearSrc;
+                isClear = !isClear;
+            });
+        }
+        // 收藏按鈕
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        if (favoriteBtn) {
+            const favText = document.getElementById('favText');
+            const favIcon = document.getElementById('favIcon');
+            const currentFanhao = favoriteBtn.dataset.fanhao;
+            let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            function updateFavButton() {
+                if (favorites.includes(currentFanhao)) {
+                    favText.textContent = "已收藏";
+                    favIcon.textContent = "💗";
+                    favoriteBtn.classList.add('favorited');
+                } else {
+                    favText.textContent = "💗 加入收藏";
+                    favIcon.textContent = "💗";
+                    favoriteBtn.classList.remove('favorited');
+                }
+            }
+            updateFavButton();
+            favoriteBtn.addEventListener('click', () => {
+                if (favorites.includes(currentFanhao)) {
+                    favorites = favorites.filter(id => id !== currentFanhao);
+                } else {
+                    favorites.push(currentFanhao);
+                }
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                updateFavButton();
+            });
+        }
+
+        // Basic search redirect
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && e.target.value.trim() !== '') {
+                    const query = e.target.value.trim();
+                    window.location.href = '/search.html?q=' + encodeURIComponent(query) + '&lang={{ lang }}';
+                }
+            });
+        }
+    </script>
+</body>
+</html> 

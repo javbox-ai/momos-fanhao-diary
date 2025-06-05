@@ -210,10 +210,11 @@ header .search-bar input[type="search"]:focus {
     filter: none !important;
 }
 @media (hover: hover) and (pointer: fine) {
-    .video-card-thumbnail-link:hover .video-card-thumbnail,
-    .video-card-thumbnail-link:hover .thumb-mask {
+    .video-card-thumbnail-link:hover .video-card-thumbnail {
         filter: none !important;
-        background: rgba(255,255,255,0);
+    }
+    .video-card-thumbnail-link:hover .thumb-mask {
+        background: rgba(255,255,255,0) !important;
     }
 }
 
@@ -283,30 +284,46 @@ header .search-bar input[type="search"]:focus {
 }
 
 /* === Disclaimer Section (Above Footer) === */
-.disclaimer-section {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(184,92,142,0.04);
-    border-top: 2px solid #f3d6e6;
-    padding: 1.5em 2em;
+.disclaimer-section-above-footer.card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-top: 3px solid #FF69B4;
 }
 
 .disclaimer-title {
-    color: #FF69B4;
+    color: #d13878;
     font-size: 1.5em;
-    margin-bottom: 1em;
-    font-weight: 600;
-    border-bottom: 1px dashed #f3d6e6;
-    padding-bottom: 0.5em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #fce4ec;
+}
+
+.about-site-text,
+.disclaimer-text {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.about-site-text {
+    background-color: #fff9fc;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #FF69B4;
+    margin-bottom: 20px;
 }
 
 .disclaimer-text {
-    font-size: 0.95em;
-    line-height: 1.7;
-    color: #666;
-    text-align: justify;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #ffb09e;
 }
 
 /* === Footer === */
@@ -514,23 +531,11 @@ header .search-bar input[type="search"]:focus {
   box-shadow: 0 1px 8px rgba(184,92,142,0.04);
   padding: 1.2em 1.5em;
 }
-
-.review-section p, .plot-section p {
-  margin-bottom: 1.5em;
-  line-height: 1.8;
-  text-indent: 0;
-}
-
-.review-section p:last-child, .plot-section p:last-child {
-  margin-bottom: 0;
-}
-
 .section-divider {
   border: none;
   border-top: 2px dashed #f3d6e6;
   margin: 2em 0 1.5em 0;
 }
-
 .multiline-text {
   white-space: pre-line;
   line-height: 1.8;
@@ -538,9 +543,9 @@ header .search-bar input[type="search"]:focus {
 }
 
 /* 7. footer 區塊 */
-footer, .footer-low {
-  margin-top: 3em;
-  padding: 0.9em 0 0.5em 0;
+.footer-low {
+  margin-top: 2em;
+  padding: 0.7em 0 0.3em 0;
   background: #f8f0fa;
   color: #b85c8e;
   font-size: 1em;
@@ -553,12 +558,11 @@ footer, .footer-low {
 /* 8. 免責聲明分隔 */
 .disclaimer-section {
   margin-top: 2em;
-  margin-bottom: 2em;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 2px 8px rgba(184,92,142,0.04);
   border-top: 2px solid #f3d6e6;
-  padding: 1.5em 2em;
+  padding: 1.2em 1.5em;
 }
 
 /* 影片縮圖模糊與遮罩 */
@@ -706,14 +710,14 @@ footer, .footer-low {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 30px auto;
+    margin: 0 auto;
     padding: 8px;
     border-radius: 30px;
     background-color: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.pagination-btn, .pagination-button {
+.pagination-button {
     min-width: 40px;
     height: 40px;
     margin: 3px;
@@ -728,19 +732,17 @@ footer, .footer-low {
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.pagination-btn.current, .pagination-button.active {
+.pagination-button.active {
     background-color: #FF69B4;
     color: white;
     box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
 }
 
-.pagination-btn:hover:not(.current), .pagination-button:hover:not(.active):not(.disabled) {
+.pagination-button:hover:not(.active):not(.disabled) {
     background-color: #fce4ec;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
 }
 
 .pagination-button.disabled {
@@ -782,128 +784,95 @@ footer, .footer-low {
     }
 }
 
-/* 金句高亮区块样式 */
-.highlight-quote {
-    background-color: rgba(255, 193, 7, 0.15);
-    border-left: 4px solid #ffc107;
-    border-radius: 4px;
-    padding: 15px;
-    margin: 20px 0;
-    position: relative;
-}
-
-.highlight-quote blockquote {
-    margin: 0;
-    font-size: 1.2em;
-    line-height: 1.5;
-    font-style: italic;
-    color: #333;
-    padding-left: 24px;
-}
-
-.quote-icon {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    font-size: 1.5em;
-    color: #ffc107;
-}
-
-.quote-text {
-    font-weight: 500;
-}
-
-/* 短评墙样式 */
-.quote-wall {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
-    margin: 20px 0;
-}
-
-.quote-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 16px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.quote-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.quote-card::before {
-    content: '"';
-    position: absolute;
-    top: -10px;
-    left: 10px;
-    font-size: 5em;
-    color: rgba(0,0,0,0.05);
-    font-family: serif;
-}
-
-.quote-text-preview {
-    font-size: 1.1em;
-    line-height: 1.5;
-    margin-bottom: 10px;
-    font-style: italic;
+/* 觀影心得樣式 */
+.review-content {
+    line-height: 1.7;
+    font-size: 1rem;
     color: #333;
 }
 
-.quote-source {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
+.review-content p {
+    margin-bottom: 1.2rem;
+    text-align: justify;
 }
 
-.quote-thumb {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-}
-
-.quote-video-info {
-    flex: 1;
-}
-
-.quote-video-title {
-    font-size: 0.9em;
+.review-tag {
+    color: #ff6b9a;
     font-weight: bold;
-    margin: 0;
-    color: #333;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
 }
 
-.quote-video-code {
-    font-size: 0.8em;
-    color: #666;
+.review-subtitle {
+    font-weight: bold;
+    font-size: 1.15rem;
+    color: #d4417f;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid #ff6b9a;
+    padding-left: 10px;
 }
 
-.quote-card-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+/* 英文觀影心得樣式 */
+.review-content.english-review p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
 }
 
-/* 响应式调整 */
+/* 關於本站與免責聲明區塊美化 */
+.disclaimer-section-above-footer {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.disclaimer-title {
+    color: #ff6b9a;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.about-site-text, .disclaimer-text {
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    padding: 0 1rem;
+}
+
+/* Footer調整 */
+.site-footer {
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+/* 優化RWD */
 @media (max-width: 768px) {
-    .quote-wall {
-        grid-template-columns: 1fr;
+    .video-card-title {
+        font-size: 1rem;
+        line-height: 1.4;
     }
     
-    .highlight-quote blockquote {
-        font-size: 1.1em;
+    .video-card-chips {
+        flex-wrap: wrap;
+    }
+    
+    .chip {
+        margin-bottom: 0.5rem;
+    }
+    
+    .video-header h1 {
+        font-size: 1.3rem;
+        line-height: 1.4;
+    }
+    
+    .video-content {
+        flex-direction: column;
+    }
+    
+    .disclaimer-section-above-footer {
+        padding: 1rem;
     }
 } 
